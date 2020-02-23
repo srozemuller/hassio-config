@@ -8,7 +8,8 @@
 !*.md
 !*sensors
 !*lovelace
-!*www
+!www
+!themes
 
 # Ignore folders.
 .storage
