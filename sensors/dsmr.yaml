@@ -1,0 +1,10 @@
+  - platform: mqtt
+    state_topic: "dsmr/json"
+    name: "Currenty Delivered"
+    unit_of_measurement: 'watt'
+    value_template: "{{ value_json.electricity_currently_delivered }}"    
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Day Consumption"
+    unit_of_measurement: 'Kwh'
+    value_template: "{{ value_json.electricity_merged }}"

@@ -1,0 +1,59 @@
+#Battery check
+  - platform: min_max
+    type: min
+    name: "Lowest Battery"
+    entity_ids:
+      - sensor.0x14b457fffec68833_battery # Souterain
+      - sensor.0x00158d00040e0c16_battery # Kleine raam beneden
+    
+#DarkSky
+  - platform: darksky
+    api_key: !secret dark_api
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+#Nest
+  - platform: badnest
+
+#Presense
+  - platform: google_travel_time
+    name: "Sander naar werk"
+    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
+    origin: person.sander
+    destination: zone.werk_sander
+    scan_interval: 600
+  - platform: google_travel_time
+    name: "Sander naar Deventer"
+    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
+    origin: person.sander
+    destination: zone.sander_deventer
+    scan_interval: 600
+
+ 
+#HUE Hack
+  - platform: rest 
+    resource: !secret hue_resource
+    name: 'Hue buttons'
+    value_template: '{{ value_json.state.buttonevent }}' 
+    scan_interval: 1 
+  - platform: rest 
+    resource: !secret hue_resource 
+    name: 'Hue Last update'
+    value_template: '{{ value_json.state.lastupdated }}' 
+    scan_interval: 1 
+  - platform: template
+    sensors:
+      light_toilet_last_change:
+        friendly_name: "Toilet Last Change"
+        value_template: '{{ (as_timestamp(states.light.toilet.last_changed)) | timestamp_custom("%A, %d %h %H:%M") }}'
+  - platform: template
+    sensors:
+      light_toilet_state:
+        friendly_name: "Toilet Light State"
+        value_template: "{{states('light.toilet')}}"
