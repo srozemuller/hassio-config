@@ -13,9 +13,9 @@ Devices:
 - Tado Thermostat
 - Tado Smart Radiator
 - IKEA Tradfri Lightbulbs
-- IKEA Tradfri Motion Sensor
-- Xiaomi Aqara Door Window / Door Sensor Zigbee 
-- NEO Coolcam Smart Plug WiFi Socket 3680W 16A (deprecated)
+- [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
+- [Zigbee CC2531 Sniffer](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
+- [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
 
 RPI:
 - [Docker](https://www.docker.com)
@@ -26,12 +26,15 @@ RPI:
 
 [Azure](https://portal.azure.com) 
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
-- Docker
-  - Portainer
+- [Docker](https://www.docker.com)
+  - [Portainer](https://www.portainer.io/installation/)
   - [Postgres](https://hub.docker.com/_/postgres)
   - [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
 
-For setting up the VPN i used the following steps:
+Setup Azure IPsec
+[https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal](https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
+
+For setting up the VPN on the Raspberry I used the following steps:
 Update first
 ```
 $ apt update && sudo apt upgrade -y 
@@ -78,13 +81,42 @@ dpdtimeout=120
 dpdaction=restart 
 auto=start
 ```
+Firewall settings
+```
+sudo iptables -t nat -A POSTROUTING -s AzureLocalSubnet/24 -d localSubnet/24 -j MASQUERADE
+```
+Start the service (on boot)
+```
+$ sudo ipsec restart
+$ sudo systemctl enable strongswan
+```
+Status
+```
+$ sudo ipsec status
+```
 
-# Used Home Assistant Components
+
+# Used Hass.io components & cards
+Cards
 - https://github.com/custom-cards/button-card
 - https://github.com/kalkih/mini-graph-card
 - https://github.com/thomasloven/lovelace-card-mod
 - https://github.com/nervetattoo/simple-thermostat
+
+Components
 - https://github.com/USA-RedDragon/badnest
+- [https://github.com/hassio-addons/addon-node-red](https://github.com/hassio-addons/addon-node-red)
+- [https://github.com/Koenkk/zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt)
+- [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
+
+# Roadmap
+Environment
+- Remove Neo coolcam Smart plugs
+- Setup Strongswan on Azure Ubuntu VM
+
+Hass.io
+- Scheduled dark-light theme
+- 
