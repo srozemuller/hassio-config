@@ -115,8 +115,10 @@ Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 # Roadmap
 Environment
 - Remove Neo coolcam Smart plugs
-- Setup Strongswan on Azure Ubuntu VM
+- Setup Strongswan on Azure Ubuntu VM, remove Azure VPN Gateway (costs ;))
 
 Hass.io
 - Scheduled dark-light theme
-- 
+- Onboarding Spotify
+- Onboarding Playstation
+- Adding light scenes
