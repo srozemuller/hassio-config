@@ -21,9 +21,9 @@ Devices:
 RPI:
 - Docker
   - Home Assistant (Hass.io)
-  - DSMR-Reader
-  - Portainer
-- Strongswan 
+  - DSMR-Reader ([Docker install](https://github.com/xirixiz/dsmr-reader-docker))
+  - Portainer ([Installation](https://www.portainer.io/installation/))
+- Strongswan ([Website](https://strongswan.org/))
 
 Azure Environment
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
@@ -31,52 +31,27 @@ VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
   - Portainer
   - Postgres
   - PostgresAdmin
-Configured VPN connection to local.
 
-
-#Used Home Assistant Components
+For setting up the VPN i used the following steps:
+Update first
+```
+$ apt update && sudo apt upgrade -y 
+$ apt install strongswan -y
+```
+Set kernel parameters
+```
+$ cat >> /etc/sysctl.conf << EOF 
+net.ipv4.ip_forward = 1 
+net.ipv4.conf.all.accept_redirects = 0 
+net.ipv4.conf.all.send_redirects = 0 EOF 
+$ sysctl -p /etc/sysctl.conf
+```
+# Used Home Assistant Components
 - https://github.com/custom-cards/button-card
 - https://github.com/kalkih/mini-graph-card
+- https://github.com/thomasloven/lovelace-card-mod
+- https://github.com/nervetattoo/simple-thermostat
+- https://github.com/USA-RedDragon/badnest
 
-
-The environment has three different behaviours.
-- full automation
-- vacation mode (default mode)
-- manual mode
-
-
-```javascript
-{
-	position: [0, 0],
-	width: 1,
-	title: 'Modus',
-	classes: [CLASS_BIG],
-	type: TYPES.INPUT_BOOLEAN,
-	id: 'input_boolean.turn_on_vacationmode',
-	icons: {
-	  on: 'mdi-caravan',
-	  off: 'mdi-home'
-	},
-	states: {
-	  on: "Vakantie",
-	  off: "Home"
-	},
-	customStyles: function (item, entity) {
-	        if (entity.state == 'on') {
-	            return {
-	                'background': '#E3655B',
-	                //'filter': 'grayscale()',
-	            };
-	        }
-	         else {
-	            return {
-	                'background': '#5B8C5A',
-	                //'filter': 'grayscale()',
-	            };
-	        }
-	    },
-},
-```
-![Alt text](https://github.com/srozemuller/HomeAssistant/blob/master/www/tileboard/images/screenshots/vacation.png?raw=true "Vacation mode")
-![Alt text](https://github.com/srozemuller/HomeAssistant/blob/master/www/tileboard/images/screenshots/home.png?raw=true "Home mode")
+Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
