@@ -1,14 +1,14 @@
 # Home Automation with Docker and Postgres on RaspberryPI and AzureVM.
 In the basics my environment has the following configuration:
 
-Local:
+#### Local:
 - [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 - [Philips HUE](https://www2.meethue.com/)
 - [Tado Gateway](https://www.tado.com/)
 - [Wireless Zigbee CC2531 Sniffer Bare Board](https://nl.aliexpress.com/item/32950799594.html?spm=a2g0s.9042311.0.0.44264c4dMfEXKg)
 - [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module]((https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07))
 
-Devices: 
+##### Devices: 
 - Philips HUE Lightbulbs
 - Tado Thermostat
 - Tado Smart Radiator
@@ -17,21 +17,21 @@ Devices:
 - [Zigbee CC2531 Sniffer](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
 - [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
 
-RPI:
+##### RPI:
 - [Docker](https://www.docker.com)
   - [Hass.io](https://www.hass.io)
   - [DSMR-Reader](https://github.com/xirixiz/dsmr-reader-docker)
   - [Portainer](https://www.portainer.io/installation/)
 -  [Strongswan](https://strongswan.org/)
 
-[Azure](https://portal.azure.com) 
+#### [Azure](https://portal.azure.com) 
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
 - [Docker](https://www.docker.com)
   - [Portainer](https://www.portainer.io/installation/)
   - [Postgres](https://hub.docker.com/_/postgres)
   - [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
 
-Setup Azure IPsec
+##### Setup Azure IPsec
 [https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal](https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
 
 For setting up the VPN on the Raspberry I used the following steps:
@@ -96,7 +96,7 @@ $ sudo ipsec status
 ```
 
 
-# Used Hass.io components & cards
+####  Used Hass.io components & cards
 Cards
 - https://github.com/custom-cards/button-card
 - https://github.com/kalkih/mini-graph-card
@@ -110,9 +110,9 @@ Components
 - [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
-SSL: https://www.splitbrain.org/blog/2017-08/10-homeassistant_duckdns_letsencrypt
 
-# Roadmap
+
+### Roadmap
 Environment
 - Remove Neo coolcam Smart plugs
 - Setup Strongswan on Azure Ubuntu VM, remove Azure VPN Gateway (costs ;))
@@ -121,4 +121,3 @@ Hass.io
 - Scheduled dark-light theme
 - Onboarding Spotify
 - Onboarding Playstation
-- Adding light scenes
