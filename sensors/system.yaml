@@ -27,5 +27,3 @@
     - type: ipv4_address
       arg: eth0
       
-      
-- platform: dsmr_reader
