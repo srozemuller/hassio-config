@@ -2,8 +2,8 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  #longitude: !secret longitude
-  #latitude: !secret latitude
+  longitude: !secret longitude
+  latitude: !secret latitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
   # metric for Metric, imperial for Imperial
@@ -25,11 +25,21 @@ recorder:
   purge_keep_days: 90
   db_url: !secret postgres_url
 
+shopping_list:
 system_health:
 sun:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-# http:
-#   base_url: example.duckdns.org:8123
+http:
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+  
+#lovelace:
+#  mode: yaml
+mobile_app:
+device_tracker:
+homekit:
+
 
 #automation: !include_dir_merge_list automation/
 script: !include scripts.yaml
@@ -38,7 +48,14 @@ sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 frontend: 
   themes: !include themes.yaml
+ios: !include_dir_merge_list notifications
+input_boolean: !include inputbooleans.yaml
+input_number: !include inputnumbers.yaml
 
+binary_sensor:
+  - platform: workday
+    country: NL  
+    
 badnest:
   issue_token: !secret nest_token
   cookie: !secret nest_cookie
@@ -50,108 +67,6 @@ calendar:
     password: !secret app_sander
     url: https://caldav.icloud.com
 
-
-#lovelace:
-#  mode: yaml
-mobile_app:
-device_tracker:
-homekit:
-ios:
-  push:
-    categories:
-      - name: Alarm
-        identifier: 'alarm'
-        actions:
-          - identifier: 'SILENCE_ALARM'
-            title: 'Silence Alarm'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: yes
-            behavior: 'default'
-      - name: Siren
-        identifier: 'siren'
-        actions:
-          - identifier: 'ACTIVATE_SIRENS'
-            title: 'Activate Sirens'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: yes
-            behavior: 'default'    
-      - name: TurnOffLights
-        identifier: 'lights'
-        actions:
-          - identifier: 'TURNOFF_LIGHTS'
-            title: 'Zet lichten uit'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: no
-            behavior: 'default' 
-          - identifier: 'TURNON_MANUALMODE'
-            title: 'Niet nodig voor nu'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: no
-            behavior: 'default' 
-      - name: TurnOffVactionMode
-        identifier: 'vacationmode'
-        actions:
-          - identifier: 'TURNOFF_VACMODE'
-            title: 'Zet vakantiemodus uit'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: no
-            behavior: 'default' 
-      - name: TurnOnVactionMode
-        identifier: 'vacationmodeon'
-        actions:
-          - identifier: 'TURNON_VACMODE'
-            title: 'Zet vakantiemodus aan'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: no
-            behavior: 'default' 
-          - identifier: 'TURNON_MANUALMODE'
-            title: 'Niet nodig voor nu'
-            activationMode: 'background'
-            authenticationRequired: no
-            destructive: no
-            behavior: 'default' 
-input_number:
-  lights_brightness:
-    name: Brightness
-    initial: 25
-    min: 1
-    max: 255
-    step: 1
-    mode: slider
-    icon: 'mdi:brightness-7'
-  hue_transition:
-    name: Minuten
-    initial: 1
-    min: 0
-    max: 59
-    step: 1 
-    icon: 'mdi:timer'
-  toilet_light_duration:
-    name: Minuten
-    initial: 10
-    min: 1
-    max: 30
-    step: 1
-    mode: slider
-    icon: 'mdi:timer'
-  moisture_limit:
-    name: Vochtigheidlimiet
-    initial: 1
-    min: 1
-    max: 100
-    step: 1
-    mode: slider
-    icon: 'mdi:water'
-binary_sensor:
-  - platform: workday
-    country: NL  
-
 tado:
   username: !secret tado_user
   password: !secret tado_pass
@@ -161,24 +76,5 @@ tuya:
   password: !secret tuya_pass
   country_code: 31
   platform: smart_life
-  
-
-input_boolean:
-  turn_on_home:
-    name: At home
-    initial: off
-    icon: mdi:home
-  turn_on_vacationmode:
-    name: Zet vakantie modus aan
-    initial: on
-    icon: mdi:caravan
-  turn_on_manual:
-    name: Manual
-    initial: off
-    icon: mdi:human-male
-  turn_on_darkmode:
-    name: Dark
-    initial: off
-    icon: mdi:weather-night
 
 
