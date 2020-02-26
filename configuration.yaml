@@ -2,8 +2,8 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  latitude: !secret latitude
-  longitude: !secret longitude
+  #longitude: !secret longitude
+  #latitude: !secret latitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
   # metric for Metric, imperial for Imperial
@@ -53,7 +53,7 @@ calendar:
 
 #lovelace:
 #  mode: yaml
-
+mobile_app:
 device_tracker:
 homekit:
 ios:
