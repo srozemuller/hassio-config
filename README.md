@@ -1,7 +1,7 @@
 # Home Automation with Docker and Postgres on RaspberryPI and AzureVM.
 In the basics my environment has the following configuration
 
-https://img.shields.io/github/repo-size/srozemuller/hassio-config
+![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config)
 
 #### Local:
 - [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
