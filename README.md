@@ -110,7 +110,7 @@ Components
 - [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
-
+SSL: https://www.splitbrain.org/blog/2017-08/10-homeassistant_duckdns_letsencrypt
 
 # Roadmap
 Environment
