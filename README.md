@@ -1,7 +1,7 @@
 # Home Automation with Docker and Postgres on RaspberryPI and AzureVM.
 In the basics my environment has the following configuration
 
-![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config)![enter image description here](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config) 
 #### Local:
 - [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 - [Philips HUE](https://www2.meethue.com/)
