@@ -7,7 +7,7 @@ In the basics my environment has the following configuration
 - [Philips HUE](https://www2.meethue.com/)
 - [Tado Gateway](https://www.tado.com/)
 - [Wireless Zigbee CC2531 Sniffer Bare Board](https://nl.aliexpress.com/item/32950799594.html?spm=a2g0s.9042311.0.0.44264c4dMfEXKg)
-- [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module]((https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07))
+- [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module](https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07)
 
 ##### Devices: 
 - Philips HUE Lightbulbs
@@ -15,7 +15,7 @@ In the basics my environment has the following configuration
 - Tado Smart Radiator
 - IKEA Tradfri Lightbulbs
 - [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
-- [Zigbee CC2531 Sniffer](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
+- [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
 - [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
 
 ##### RPI:
