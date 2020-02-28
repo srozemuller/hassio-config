@@ -247,3 +247,7 @@ Hass.io
  
 ### Screenshots
 ![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
+![LightTheme-SystemInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20799.png)
+![DarkTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20794.png)
+![DarkTheme-SystemInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20796.png)
+![DarkTheme-EnergyInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20797.png)
