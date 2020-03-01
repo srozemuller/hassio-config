@@ -18,7 +18,9 @@ light:
   accent-color-orange: '#f57c00'                                                  # Plastic Garbage
   accent-color-green: '#388e3c'                                                   # Bio Garbage
   accent-color-grey: 'var(--text-color)'
-
+  accent-color-cyan: '#00bcd4'                                                    # 500 
+  accent-color-purple: '#9c27b0'                                                  # 500
+  accent-color-yellow: '#ffeb3b'                                                  # 500
   # Header
   primary-color: '#1976d2'                                                        # Background color
   text-primary-color: '#ffffff'                                         # Text
