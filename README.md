@@ -1,124 +1,82 @@
 # Home Automation with Docker and Postgres on RaspberryPI and AzureVM.
-In the basics my environment has the following configuration
+In the basics my environment has the following configuration:
 
-![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config) 
-#### Local:
-- [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
-- [Philips HUE](https://www2.meethue.com/)
-- [Tado Gateway](https://www.tado.com/)
-- [Wireless Zigbee CC2531 Sniffer Bare Board](https://nl.aliexpress.com/item/32950799594.html?spm=a2g0s.9042311.0.0.44264c4dMfEXKg)
-- [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module](https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07)
+Local environment:
+Hardware:
+- Raspberry PI 3b+ with 16GB SD
+- Philips HUE Gateway
+- Tado Gateway
+- Wireless Zigbee CC2531 Sniffer Bare Board
+- FTDI FT232RL USB To TTL Serial IC Adapter Converter Module 
 
-##### Devices: 
+Devices: 
 - Philips HUE Lightbulbs
 - Tado Thermostat
 - Tado Smart Radiator
 - IKEA Tradfri Lightbulbs
-- [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
-- [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
-- [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
+- IKEA Tradfri Motion Sensor
+- Xiaomi Aqara Door Window / Door Sensor Zigbee 
+- NEO Coolcam Smart Plug WiFi Socket 3680W 16A (deprecated)
 
-##### RPI:
-- [Docker](https://www.docker.com)
-  - [Hass.io](https://www.hass.io)
-  - [DSMR-Reader](https://github.com/xirixiz/dsmr-reader-docker)
-  - [Portainer](https://www.portainer.io/installation/)
--  [Strongswan](https://strongswan.org/)
+RPI:
+- Docker
+  - Home Assistant (Hass.io)
+  - DSMR-Reader
+  - Portainer
+- Strongswan 
 
-#### [Azure](https://portal.azure.com) 
+Azure Environment
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
-- [Docker](https://www.docker.com)
-  - [Portainer](https://www.portainer.io/installation/)
-  - [Postgres](https://hub.docker.com/_/postgres)
-  - [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
-
-##### Setup Azure IPsec
-[https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal](https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
-
-For setting up the VPN on the Raspberry I used the following steps:
-Update first
-```
-$ apt update && sudo apt upgrade -y 
-$ apt install strongswan -y
-```
-Set kernel parameters
-```
-$ cat >> /etc/sysctl.conf << EOF 
-net.ipv4.ip_forward = 1 
-net.ipv4.conf.all.accept_redirects = 0 
-net.ipv4.conf.all.send_redirects = 0 EOF 
-$ sysctl -p /etc/sysctl.conf
-```
-Generate preshared key
-```
-$ openssl rand -base64 64
-```
-
-We will setup our VPN Gateway in Site A (Paris), first to setup the `/etc/ipsec.secrets` file:
-```
-$ cat /etc/ipsec.secrets # source destination [ExternalIP] [RemoteExternalIP] : PSK "xxxxx"
-```
-Now to setup our VPN configuration in `/etc/ipsec.conf`:
-```
-cat /etc/ipsec.conf 
-# basic configuration 
-config setup charondebug="all" 
-uniqueids=yes 
-strictcrlpolicy=no 
-# connection to azure 
-conn home-to-azure 
-authby=secret left=%defaultroute 
-leftid=ExternalIP
-leftsubnet=localsubnet/24 
-right=azureExternalIP
-rightsubnet=azureLocalsubnet/24 
-ike=aes256-sha2_256-modp1024! 
-esp=aes256-sha2_256! 
-keyingtries=0 
-ikelifetime=1h 
-lifetime=8h 
-dpddelay=30 
-dpdtimeout=120 
-dpdaction=restart 
-auto=start
-```
-Firewall settings
-```
-sudo iptables -t nat -A POSTROUTING -s AzureLocalSubnet/24 -d localSubnet/24 -j MASQUERADE
-```
-Start the service (on boot)
-```
-$ sudo ipsec restart
-$ sudo systemctl enable strongswan
-```
-Status
-```
-$ sudo ipsec status
-```
+- Docker
+  - Portainer
+  - Postgres
+  - PostgresAdmin
+Configured VPN connection to local.
 
 
-####  Used Hass.io components & cards
-Cards
+#Used Home Assistant Components
 - https://github.com/custom-cards/button-card
 - https://github.com/kalkih/mini-graph-card
-- https://github.com/thomasloven/lovelace-card-mod
-- https://github.com/nervetattoo/simple-thermostat
-
-Components
-- https://github.com/USA-RedDragon/badnest
-- [https://github.com/hassio-addons/addon-node-red](https://github.com/hassio-addons/addon-node-red)
-- [https://github.com/Koenkk/zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt)
-- [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
-
-Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
 
-### Roadmap
-Environment
-- Remove Neo coolcam Smart plugs
-- Setup Strongswan on Azure Ubuntu VM, remove Azure VPN Gateway (costs ;))
+The environment has three different behaviours.
+- full automation
+- vacation mode (default mode)
+- manual mode
 
-Hass.io
-- Scheduled dark-light theme
-- Onboarding Spotify
-- Onboarding Playstation
+
+```javascript
+{
+	position: [0, 0],
+	width: 1,
+	title: 'Modus',
+	classes: [CLASS_BIG],
+	type: TYPES.INPUT_BOOLEAN,
+	id: 'input_boolean.turn_on_vacationmode',
+	icons: {
+	  on: 'mdi-caravan',
+	  off: 'mdi-home'
+	},
+	states: {
+	  on: "Vakantie",
+	  off: "Home"
+	},
+	customStyles: function (item, entity) {
+	        if (entity.state == 'on') {
+	            return {
+	                'background': '#E3655B',
+	                //'filter': 'grayscale()',
+	            };
+	        }
+	         else {
+	            return {
+	                'background': '#5B8C5A',
+	                //'filter': 'grayscale()',
+	            };
+	        }
+	    },
+},
+```
+![Alt text](https://github.com/srozemuller/HomeAssistant/blob/master/www/tileboard/images/screenshots/vacation.png?raw=true "Vacation mode")
+![Alt text](https://github.com/srozemuller/HomeAssistant/blob/master/www/tileboard/images/screenshots/home.png?raw=true "Home mode")
+
