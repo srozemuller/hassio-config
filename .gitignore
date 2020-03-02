@@ -8,9 +8,15 @@
 !*.md
 !*sensors
 !*lovelace
+<<<<<<< HEAD
 !*www
 !*notifications
 !*screenshots
+=======
+!www
+!themes
+!screenshots
+>>>>>>> 2005d4b57e5c39323ff9ac3e8b0cd571cda218e9
 
 # Ignore folders.
 .storage
