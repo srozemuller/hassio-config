@@ -12,7 +12,7 @@
 !*notifications
 !*screenshots
 !themes
-!arduino
+!*arduino
 
 # Ignore folders.
 .storage
@@ -31,4 +31,4 @@ known_devices.yaml
 home-assistant_v2.db
 home-assistant.log
 zones.yaml
-settings.h
+/arduino/settings.h
