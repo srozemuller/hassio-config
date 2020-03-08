@@ -6,6 +6,23 @@
       - sensor.0x14b457fffec68833_battery # Souterain
       - sensor.0x00158d00040e0c16_battery # Kleine raam beneden
     
+#Water softener
+  - platform: mqtt
+    state_topic: "/watersoftner/sensor/salt"
+    name: "Salt level"
+    unit_of_measurement: 'cm'
+  - platform: template
+    sensors:
+      salt_level_percent:
+        friendly_name: "Salt level percent free"
+        unit_of_measurement: '%'
+        value_template: '{{ ((states.sensor.salt_level.state|int) / 90 *100)|round(1) }}'
+  - platform: template
+    sensors:
+      salt_level_last_change:
+        friendly_name: "Salt Level Last Change"
+        value_template: '{{ (as_timestamp(states.salt_level.last_changed)) | timestamp_custom("%A, %d %h %H:%M") }}'
+  
 #DarkSky
   - platform: darksky
     api_key: !secret dark_api
@@ -22,18 +39,18 @@
   - platform: badnest
 
 #Presense
-  - platform: google_travel_time
-    name: "Sander naar werk"
-    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
-    origin: person.sander
-    destination: zone.werk_sander
-    scan_interval: 600
-  - platform: google_travel_time
-    name: "Sander naar Deventer"
-    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
-    origin: person.sander
-    destination: zone.sander_deventer
-    scan_interval: 600
+#  - platform: google_travel_time
+#    name: "Sander naar werk"
+#    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
+#    origin: person.sander
+#    destination: zone.werk_sander
+#    scan_interval: 600
+#  - platform: google_travel_time
+#    name: "Sander naar Deventer"
+#    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
+#    origin: person.sander
+#    destination: zone.sander_deventer
+#    scan_interval: 600
 
  
 #HUE Hack
