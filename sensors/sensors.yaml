@@ -19,7 +19,7 @@
         value_template: '{{ ((states.sensor.salt_level.state|int) / 90 *100)|round(1) }}'
   - platform: template
     sensors:
-      salt_level_last_change:
+      salt_level_last_update:
         friendly_name: "Salt Level Last Update"
         value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
   
