@@ -26,4 +26,12 @@
     - type: last_boot
     - type: ipv4_address
       arg: eth0
-      
+
+- platform: rest
+  resource: http://172.16.10.4:8126/container/some-posgres
+  name: 'Postgres State' 
+  value_template: '{{ value_json.state}}'
+- platform: rest
+  resource: http://172.16.10.4:8126/container/some-posgres 
+  name: 'Postgres Uptime'
+  value_template: '{{ value_json.status}}'
