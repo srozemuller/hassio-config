@@ -193,9 +193,6 @@ $ sudo ipsec status
 
 ```
 
-  
-  
-
 #### Used Hass.io components & cards
 
 Cards
@@ -207,7 +204,7 @@ Cards
 - https://github.com/thomasloven/lovelace-card-mod
 
 - https://github.com/nervetattoo/simple-thermostat
-
+- [https://github.com/benct/lovelace-multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row)
   
 
 Components
@@ -220,6 +217,7 @@ Components
 
 -  [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
 
+- [[https://github.com/philhawthorne/ha-dockermon](https://github.com/philhawthorne/ha-dockermon)]
   
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
@@ -232,8 +230,6 @@ Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 Environment
 
 - Remove Neo coolcam Smart plugs
-
-- Setup Strongswan on Azure Ubuntu VM, remove Azure VPN Gateway (costs ;))
 
  
 Hass.io
