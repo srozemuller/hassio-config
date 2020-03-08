@@ -20,8 +20,8 @@
   - platform: template
     sensors:
       salt_level_last_change:
-        friendly_name: "Salt Level Last Change"
-        value_template: '{{ (as_timestamp(states.salt_level.last_changed)) | timestamp_custom("%A, %d %h %H:%M") }}'
+        friendly_name: "Salt Level Last Update"
+        value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
   
 #DarkSky
   - platform: darksky
