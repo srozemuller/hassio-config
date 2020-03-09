@@ -15,7 +15,7 @@
   - platform: template
     sensors:
       salt_level_percent:
-        friendly_name: "Salt level percent free"
+        friendly_name: "Salt available"
         unit_of_measurement: '%'
         value_template: '{{ ((states.sensor.salt_level.state|int) / 90 *100)|round(1) }}'
   - platform: template
