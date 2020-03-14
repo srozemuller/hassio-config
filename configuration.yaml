@@ -40,19 +40,14 @@ http:
 homekit:
 
 device_tracker:
-  - platform: nmap_tracker
-    hosts:
-      - 172.16.1.226 #sander
-    home_interval: 10
-    exclude:
-      - 172.16.1.241 #Home Assistant
+
 script: !include scripts.yaml
 group: !include groups.yaml
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 frontend: 
   themes: !include_dir_merge_named themes
-ios: !include_dir_merge_list notifications
+ios: #!include_dir_merge_list notifications
 input_boolean: !include inputbooleans.yaml
 input_number: !include inputnumbers.yaml
 
@@ -81,4 +76,6 @@ tuya:
   country_code: 31
   platform: smart_life
 
-
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
