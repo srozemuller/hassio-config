@@ -17,7 +17,7 @@ homeassistant:
         - fd00::/8
         - ::1
       trusted_users:
-        172.16.1.244: !secret ipadminiuser
+        172.16.1.245: !secret ipadminiuser
       allow_bypass_login: true
     - type: homeassistant 
 # Configure a default setup of Home Assistant (frontend, api, etc)
