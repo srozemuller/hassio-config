@@ -13,7 +13,7 @@
 !*screenshots
 !themes
 !*arduino
-
+!*nodered
 # Ignore folders.
 .storage
 .cloud
