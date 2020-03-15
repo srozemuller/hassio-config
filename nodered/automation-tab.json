@@ -1,0 +1,448 @@
+[
+    {
+        "id": "2c3d28e1.93a558",
+        "type": "tab",
+        "label": "Automations",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5f672203.7f76cc",
+        "type": "server-state-changed",
+        "z": "2c3d28e1.93a558",
+        "name": "Tado mode",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "entityidfilter": "sensor.verwarming_tado_mode",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 80,
+        "wires": [
+            [
+                "12099f96.563dd",
+                "b633967c.85e058"
+            ]
+        ]
+    },
+    {
+        "id": "12099f96.563dd",
+        "type": "debug",
+        "z": "2c3d28e1.93a558",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 410,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "b633967c.85e058",
+        "type": "switch",
+        "z": "2c3d28e1.93a558",
+        "name": "HOME/AWAY",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "AWAY",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "HOME",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 420,
+        "y": 80,
+        "wires": [
+            [
+                "fbbade26.75cb9"
+            ],
+            [
+                "e3c8f53f.4b5218"
+            ]
+        ]
+    },
+    {
+        "id": "e3c8f53f.4b5218",
+        "type": "api-call-service",
+        "z": "2c3d28e1.93a558",
+        "name": "turnOffVacationMode",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "input_boolean",
+        "service": "turn_off",
+        "entityId": "input_boolean.turn_on_vacationmode",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 860,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "fbbade26.75cb9",
+        "type": "api-call-service",
+        "z": "2c3d28e1.93a558",
+        "name": "turnOnVacationMode",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "input_boolean",
+        "service": "turn_on",
+        "entityId": "input_boolean.turn_on_vacationmode",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 860,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "882e8259.4952c",
+        "type": "inject",
+        "z": "2c3d28e1.93a558",
+        "name": "Start",
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 90,
+        "y": 240,
+        "wires": [
+            [
+                "e70369c1.99a8f8"
+            ]
+        ]
+    },
+    {
+        "id": "e70369c1.99a8f8",
+        "type": "http request",
+        "z": "2c3d28e1.93a558",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": false,
+        "url": "https://my.tado.com/api/v2/homes/329549/users/?username=iot@rozemuller.com&password=Sqp8dpQuZqem825",
+        "tls": "",
+        "persist": true,
+        "proxy": "",
+        "authType": "",
+        "x": 250,
+        "y": 240,
+        "wires": [
+            [
+                "6e362a02.c9b634"
+            ]
+        ]
+    },
+    {
+        "id": "6e362a02.c9b634",
+        "type": "function",
+        "z": "2c3d28e1.93a558",
+        "name": "DevicesAtHome",
+        "func": "var counter = 0;\nvar userList = msg.payload;\nvar atHome;\nfor (var i =0 ; i < userList.length; i++){\n    var deviceList = userList[i].mobileDevices;\n    for (var d =0 ; d < deviceList.length; d++){\n    var device = deviceList[i]\n    if(deviceList[d].location.atHome === true){\n        counter++;\n    }\n  }\n  var newMsg = { payload:counter };\n}\nreturn newMsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 420,
+        "y": 240,
+        "wires": [
+            [
+                "dce9f2ab.dd01e",
+                "12099f96.563dd"
+            ]
+        ]
+    },
+    {
+        "id": "dce9f2ab.dd01e",
+        "type": "switch",
+        "z": "2c3d28e1.93a558",
+        "name": "if status > 0 (at home)",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "0",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 640,
+        "y": 240,
+        "wires": [
+            [
+                "a0ea4024.ca996"
+            ]
+        ]
+    },
+    {
+        "id": "a0ea4024.ca996",
+        "type": "api-current-state",
+        "z": "2c3d28e1.93a558",
+        "name": "if vacationmode is on",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "input_boolean.turn_on_vacationmode",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 860,
+        "y": 220,
+        "wires": [
+            [
+                "e3c8f53f.4b5218"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ae78027f.f4c96",
+        "type": "api-call-service",
+        "z": "2c3d28e1.93a558",
+        "name": "to Light",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "frontend",
+        "service": "set_theme",
+        "entityId": "",
+        "data": "{\"name\":\"light\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "mustacheAltTags": false,
+        "x": 820,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "efa32cb3.bbd8d",
+        "type": "switch",
+        "z": "2c3d28e1.93a558",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "above_horizon",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "under_horizon",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 590,
+        "y": 340,
+        "wires": [
+            [
+                "ae78027f.f4c96"
+            ],
+            [
+                "edf36240.52e7"
+            ],
+            [
+                "ae78027f.f4c96"
+            ],
+            [
+                "edf36240.52e7"
+            ]
+        ]
+    },
+    {
+        "id": "60133777.cf4a18",
+        "type": "server-state-changed",
+        "z": "2c3d28e1.93a558",
+        "name": "theme change",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_boolean.turn_on_darkmode",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 250,
+        "y": 320,
+        "wires": [
+            [
+                "efa32cb3.bbd8d"
+            ],
+            [
+                "efa32cb3.bbd8d"
+            ]
+        ]
+    },
+    {
+        "id": "edf36240.52e7",
+        "type": "api-call-service",
+        "z": "2c3d28e1.93a558",
+        "name": "to Dark",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "frontend",
+        "service": "set_theme",
+        "entityId": "",
+        "data": "{\"name\":\"dark\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "payload",
+        "output_location_type": "msg",
+        "mustacheAltTags": false,
+        "x": 820,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5618861b.2dda28",
+        "type": "api-current-state",
+        "z": "2c3d28e1.93a558",
+        "name": "Sun horizon state",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "outputs": 1,
+        "halt_if": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "sun.sun",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 250,
+        "y": 380,
+        "wires": [
+            [
+                "efa32cb3.bbd8d",
+                "132a751d.e0b09b"
+            ]
+        ]
+    },
+    {
+        "id": "a96d9a7a.7f5808",
+        "type": "inject",
+        "z": "2c3d28e1.93a558",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 80,
+        "y": 380,
+        "wires": [
+            [
+                "5618861b.2dda28"
+            ]
+        ]
+    },
+    {
+        "id": "132a751d.e0b09b",
+        "type": "api-call-service",
+        "z": "2c3d28e1.93a558",
+        "name": "Correct darkmode input switch",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "input_boolean",
+        "service": "toggle",
+        "entityId": "input_boolean.turn_on_darkmode",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 590,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d9811aec.14d0c8",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant"
+    }
+]
