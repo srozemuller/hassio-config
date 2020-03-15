@@ -37,9 +37,9 @@ http:
   
 #lovelace:
 #  mode: yaml
-homekit:
+#homekit:
 
-device_tracker:
+#device_tracker:
 
 script: !include scripts.yaml
 group: !include groups.yaml
@@ -47,7 +47,7 @@ sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 frontend: 
   themes: !include_dir_merge_named themes
-ios: #!include_dir_merge_list notifications
+#ios: #!include_dir_merge_list notifications
 input_boolean: !include inputbooleans.yaml
 input_number: !include inputnumbers.yaml
 
