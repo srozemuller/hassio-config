@@ -234,10 +234,6 @@ Environment
  
 Hass.io
 
-- Scheduled dark-light theme
-
-- Onboarding Spotify
-
 - Onboarding Playstation
 
  
