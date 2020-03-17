@@ -8,6 +8,13 @@
   unit_of_measurement: '°C'
   value_template: '{{ value | multiply(0.001) | round(1) }}'
 
+#- platform: command_line
+#  name: IPSec Status
+#  command: 'sudo ipsec status | grep -oP "(?<=\()(.*?)(?=\))"'
+#  unit_of_measurement: ''
+#  value_template: '{{ value }}'
+
+
 - platform: systemmonitor
   resources:
     - type: disk_use_percent
