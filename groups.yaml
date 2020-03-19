@@ -1,16 +1,17 @@
-default_view:
-  name: Home
-  icon: mdi:home
-  entities:
-    - group.livingroom_lights
-    - group.souterain
-    - weather.weekvoorspelling
-    - media_player.woonkamer
+#default_view:
+#  name: Home
+#  icon: mdi:home
+#  entities:
+#    - group.livingroom_lights
+#    - group.souterain
+#    - weather.weekvoorspelling
+#    - media_player.woonkamer
    
     
 ################# HOME #################    
-every_lights_inhome:
+- platform: group
   name: Alle lichten in huis
+  entities:
   icon: 'mdi:floor-lamp'
   entities:
     - light.woonkamer_voor
@@ -22,20 +23,14 @@ every_lights_inhome:
     - light.toilet_beneden
     - switch.808204522cf43204195d #lamp kachel
     - switch.808204522cf4320418c2 # kleine lamp achter  
-livingroom_lights:
+- platform: group
   name: All Lights Livingroom
   icon: 'mdi:floor-lamp'
-  entities:
-    - switch.808204522cf43204195d #lamp kachel
-    - switch.808204522cf4320418c2 # lamp tv
-    - light.kleine_lamp
+  entities:  
     - light.woonkamer_voor
     - light.woonkamer_achter
-souterain:
-  name: Souterain
-  view: no
-  entities:
-    - switch.souterain
-    - input_number.souterain_pir_duration
-    - automation.licht_aan_in_souterain
+    - light.buiten
+    - light.kleine_lamp
+    - switch.808204522cf43204195d #lamp kachel
+    - switch.808204522cf4320418c2 # kleine lamp achter  
     

@@ -42,7 +42,7 @@ http:
 #device_tracker:
 
 script: !include scripts.yaml
-group: !include groups.yaml
+light: !include lights.yaml
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 frontend: 
