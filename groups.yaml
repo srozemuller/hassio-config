@@ -9,9 +9,8 @@
    
     
 ################# HOME #################    
-- platform: group
+all-lights:
   name: Alle lichten in huis
-  entities:
   icon: 'mdi:floor-lamp'
   entities:
     - light.woonkamer_voor
@@ -23,7 +22,7 @@
     - light.toilet_beneden
     - switch.808204522cf43204195d #lamp kachel
     - switch.808204522cf4320418c2 # kleine lamp achter  
-- platform: group
+livingroom:
   name: All Lights Livingroom
   icon: 'mdi:floor-lamp'
   entities:  
