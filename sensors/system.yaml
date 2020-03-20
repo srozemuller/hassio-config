@@ -8,11 +8,13 @@
   unit_of_measurement: '°C'
   value_template: '{{ value | multiply(0.001) | round(1) }}'
 
-#- platform: command_line
-#  name: IPSec Status
-#  command: 'sudo ipsec status | grep -oP "(?<=\()(.*?)(?=\))"'
-#  unit_of_measurement: ''
-#  value_template: '{{ value }}'
+#IPSEC status check
+- platform: command_line
+  name: IPSec
+  command: 'ping -W 1 -c 1 172.16.10.4  > /dev/null 2>&1 && echo online || echo offline'
+- platform: command_line
+  name: "IPSec ping time"
+  command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
 
 
 - platform: systemmonitor
