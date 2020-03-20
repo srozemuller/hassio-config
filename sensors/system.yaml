@@ -14,6 +14,7 @@
   command: 'ping -W 1 -c 1 172.16.10.4  > /dev/null 2>&1 && echo online || echo offline'
 - platform: command_line
   name: "IPSec ping time"
+  unit_of_measurement: 'ms'
   command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
 
 
