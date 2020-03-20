@@ -239,7 +239,7 @@ Hass.io
  
 ### Screenshots
 ![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
-![LightTheme-SystemInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20799.png)
+![LightTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77206249-ca7e5f00-6af6-11ea-8d3d-00583a827891.png)
 ![DarkTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20794.png)
-![DarkTheme-SystemInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20796.png)
+![DarkTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77205228-b5a0cc00-6af4-11ea-8d59-d649b266c7c2.png)
 ![DarkTheme-EnergyInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20797.png)
