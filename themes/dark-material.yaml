@@ -18,11 +18,13 @@ dark:
   primary-color: '#1f1f1f'                                                        # Background color
   text-primary-color: 'var(--text-color)'                                         # Text
 
-  #specific garbage icons
+  #specific icons
   accent-color-orange: '#bb4d00'                                                  # Plastic Garbage
   accent-color-green: '#519657'                                                   # Bio Garbage
   accent-color-grey: 'var(--text-color)'                                          # Residual Garbage
-  
+  accent-color-cyan: '#0097a7'                                                     
+  accent-color-purple: '#c2185b'
+  accent-color-yellow: '#fbc02d'
   # Left Menu
   paper-listbox-background-color: 'var(--background-color)'                       # Background
   sidebar-icon-color: 'var(--text-medium-color)'                                  # icons

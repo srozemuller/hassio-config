@@ -8,9 +8,12 @@
 !*.md
 !*sensors
 !*lovelace
-!www
+!*www
+!*notifications
+!*screenshots
 !themes
-!screenshots
+!*arduino
+!*nodered
 
 # Ignore folders.
 .storage
@@ -29,3 +32,4 @@ known_devices.yaml
 home-assistant_v2.db
 home-assistant.log
 zones.yaml
+/arduino/settings.h

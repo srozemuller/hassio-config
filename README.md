@@ -5,7 +5,7 @@ In the basics my environment has the following configuration
 
   
 
-![hassioversion](https://img.shields.io/badge/hassio-0.105.3-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![hassioversion](https://img.shields.io/badge/hassio-0.107.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
 #### Local:
 
@@ -193,9 +193,6 @@ $ sudo ipsec status
 
 ```
 
-  
-  
-
 #### Used Hass.io components & cards
 
 Cards
@@ -207,7 +204,7 @@ Cards
 - https://github.com/thomasloven/lovelace-card-mod
 
 - https://github.com/nervetattoo/simple-thermostat
-
+- [https://github.com/benct/lovelace-multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row)
   
 
 Components
@@ -220,6 +217,7 @@ Components
 
 -  [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
 
+- [[https://github.com/philhawthorne/ha-dockermon](https://github.com/philhawthorne/ha-dockermon)]
   
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
@@ -233,21 +231,15 @@ Environment
 
 - Remove Neo coolcam Smart plugs
 
-- Setup Strongswan on Azure Ubuntu VM, remove Azure VPN Gateway (costs ;))
-
  
 Hass.io
-
-- Scheduled dark-light theme
-
-- Onboarding Spotify
 
 - Onboarding Playstation
 
  
 ### Screenshots
 ![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
-![LightTheme-SystemInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20799.png)
+![LightTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77206249-ca7e5f00-6af6-11ea-8d3d-00583a827891.png)
 ![DarkTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20794.png)
-![DarkTheme-SystemInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20796.png)
+![DarkTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77205228-b5a0cc00-6af4-11ea-8d59-d649b266c7c2.png)
 ![DarkTheme-EnergyInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20797.png)

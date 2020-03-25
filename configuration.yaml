@@ -2,8 +2,8 @@ homeassistant:
   # Name of the location where Home Assistant is running
   name: Home
   # Location required to calculate the time the sun rises and sets
-  longitude: !secret longitude
-  latitude: !secret latitude
+  # longitude: !secret longitude
+  # latitude: !secret latitude
   # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 0
   # metric for Metric, imperial for Imperial
@@ -16,6 +16,8 @@ homeassistant:
         - 172.16.1.0/24
         - fd00::/8
         - ::1
+      trusted_users:
+        172.16.1.245: !secret ipadminiuser
       allow_bypass_login: true
     - type: homeassistant 
 # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -26,8 +28,7 @@ recorder:
   db_url: !secret postgres_url
 
 shopping_list:
-system_health:
-sun:
+
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   ssl_certificate: !secret ssl_certificate
@@ -36,19 +37,17 @@ http:
   
 #lovelace:
 #  mode: yaml
-mobile_app:
-device_tracker:
-homekit:
+#homekit:
 
+#device_tracker:
 
-#automation: !include_dir_merge_list automation/
 script: !include scripts.yaml
 group: !include groups.yaml
 sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 frontend: 
-  themes: !include themes.yaml
-ios: !include_dir_merge_list notifications
+  themes: !include_dir_merge_named themes
+ios: #!include_dir_merge_list notifications
 input_boolean: !include inputbooleans.yaml
 input_number: !include inputnumbers.yaml
 
@@ -77,4 +76,6 @@ tuya:
   country_code: 31
   platform: smart_life
 
-
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
