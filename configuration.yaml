@@ -27,8 +27,6 @@ recorder:
   purge_keep_days: 90
   db_url: !secret postgres_url
 
-shopping_list:
-
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 http:
   ssl_certificate: !secret ssl_certificate
@@ -39,43 +37,47 @@ http:
 #  mode: yaml
 #homekit:
 
-#device_tracker:
+device_tracker:
 
 script: !include scripts.yaml
 group: !include groups.yaml
-sensor: !include_dir_merge_list sensors
 zone: !include zones.yaml
 frontend: 
   themes: !include_dir_merge_named themes
-ios: #!include_dir_merge_list notifications
-input_boolean: !include inputbooleans.yaml
-input_number: !include inputnumbers.yaml
 
+# Sensors
+sensor: !include_dir_merge_list sensors
 binary_sensor:
   - platform: workday
     country: NL  
-    
+# Climate entities
+climate: !include_dir_merge_list climate
+
+# Input parts
+input_boolean: !include inputbooleans.yaml
+input_number: !include inputnumbers.yaml
+
+
+# Integrations
+ios: #!include_dir_merge_list notifications
+shopping_list:
 badnest:
   issue_token: !secret nest_token
   cookie: !secret nest_cookie
   region: nl
-
 calendar:
   - platform: caldav
     username: !secret google_user
     password: !secret app_sander
     url: https://caldav.icloud.com
-
 tado:
   username: !secret tado_user
   password: !secret tado_pass
-  
 tuya:
   username: !secret tuya_user
   password: !secret tuya_pass
   country_code: 31
   platform: smart_life
-
 spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
