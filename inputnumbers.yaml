@@ -1,5 +1,13 @@
   lights_brightness:
-    name: Brightness
+    name: Woonkamer
+    initial: 25
+    min: 1
+    max: 255
+    step: 1
+    mode: slider
+    icon: 'mdi:brightness-7'
+  lights_kitchen_brightness:
+    name: Keuken
     initial: 25
     min: 1
     max: 255
@@ -28,4 +36,4 @@
     max: 100
     step: 1
     mode: slider
-    icon: 'mdi:water'
+    icon: 'mdi:brightness-percent'
