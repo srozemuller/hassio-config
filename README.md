@@ -23,13 +23,13 @@ In the basics my environment has the following configuration
 
 ##### Devices:
 
-- Philips HUE Lightbulbs
+- [Philips HUE Lightbulbs](https://www2.meethue.com/nl-nl/led-lampen)
 
-- Tado Thermostat
+- [Tado Thermostat](https://www.tado.com/nl/producten/additionele-slimme-thermostaat)
 
-- Tado Smart Radiator
+- [Tado Smart Radiator](https://www.tado.com/nl/producten/slimme-radiatorknop)
 
-- IKEA Tradfri Lightbulbs
+- [IKEA Tradfri Lightbulbs](https://www.ikea.com/nl/nl/cat/draadloze-led-lichtbron-36813/)
 
 -  [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
 
