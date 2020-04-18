@@ -19,7 +19,7 @@
 
 #Latest snapshot 
 - platform: command_line
-  name: Latest Hassio snapshot
+  name: Latest HA Snapshot
   command: "ls /usr/share/hassio/backup/*.tar -halt | head -1 | awk '{print $7,$6,$8}'"
 
 - platform: systemmonitor
