@@ -17,6 +17,10 @@
   unit_of_measurement: 'ms'
   command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
 
+#Latest snapshot 
+- platform: command_line
+  name: Latest Hassio snapshot
+  command: "ls /usr/share/hassio/backup/*.tar -halt | head -1 | awk '{print $7,$6,$8}'"
 
 - platform: systemmonitor
   resources:
