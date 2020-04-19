@@ -301,7 +301,7 @@
         "debugenabled": true,
         "service_domain": "homeassistant",
         "service": "turn_off",
-        "entityId": "group.every_lights_inhome, light.slaapkamer_daan, light.slaapkamer_stan",
+        "entityId": "group.all_lights",
         "data": "",
         "dataType": "json",
         "mergecontext": "",
@@ -934,9 +934,20 @@
         "id": "95870480.7f24a8",
         "type": "server-state-changed",
         "z": "b742b291.77ac6",
-        "name": "brightness",
+        "name": "brightness woonkamer",
         "server": "d9811aec.14d0c8",
         "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
         "entityidfilter": "input_number.lights_brightness",
         "entityidfiltertype": "exact",
         "outputinitially": false,
@@ -946,7 +957,7 @@
         "halt_if_compare": "is",
         "outputs": 1,
         "output_only_on_state_change": true,
-        "x": 80,
+        "x": 120,
         "y": 1160,
         "wires": [
             [
@@ -960,7 +971,7 @@
         "z": "b742b291.77ac6",
         "name": "Woonkamer",
         "bridge": "5c1223a1.4597fc",
-        "groupid": "2",
+        "groupid": "1",
         "colornamer": true,
         "skipevents": false,
         "x": 590,
@@ -977,7 +988,7 @@
         "func": "msg.payload = {\"brightness\": msg.payload};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 300,
+        "x": 360,
         "y": 1160,
         "wires": [
             [
@@ -1283,6 +1294,80 @@
                 "184a7e6e.e40912"
             ],
             []
+        ]
+    },
+    {
+        "id": "49e8e44c.6eb65c",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "brightness keuken",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_number.lights_kitchen_brightness",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 110,
+        "y": 1240,
+        "wires": [
+            [
+                "4197e081.21d43"
+            ]
+        ]
+    },
+    {
+        "id": "97b4e66f.947ee8",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.keuken",
+        "data": "{{msg.payload}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 610,
+        "y": 1240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4197e081.21d43",
+        "type": "function",
+        "z": "b742b291.77ac6",
+        "name": "create data object",
+        "func": "newmsg = {};\n\n    brightness = msg.payload\n\n\nmsg.data = {\"brightness\":brightness};\n\nnewmsg.payload = { data: {\"brightness\":brightness} };\n\nreturn newmsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 1240,
+        "wires": [
+            [
+                "97b4e66f.947ee8"
+            ]
         ]
     },
     {
