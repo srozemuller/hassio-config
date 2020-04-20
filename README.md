@@ -5,7 +5,7 @@ In the basics my environment has the following configuration
 
   
 
-![hassioversion](https://img.shields.io/badge/hassio-0.107.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![hassioversion](https://img.shields.io/badge/hassio-0.108.5-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
 #### Local:
 
@@ -23,13 +23,13 @@ In the basics my environment has the following configuration
 
 ##### Devices:
 
-- Philips HUE Lightbulbs
+- [Philips HUE Lightbulbs](https://www2.meethue.com/nl-nl/led-lampen)
 
-- Tado Thermostat
+- [Tado Thermostat](https://www.tado.com/nl/producten/additionele-slimme-thermostaat)
 
-- Tado Smart Radiator
+- [Tado Smart Radiator](https://www.tado.com/nl/producten/slimme-radiatorknop)
 
-- IKEA Tradfri Lightbulbs
+- [IKEA Tradfri Lightbulbs](https://www.ikea.com/nl/nl/cat/draadloze-led-lichtbron-36813/)
 
 -  [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
 
@@ -64,6 +64,8 @@ VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
 -  [Postgres](https://hub.docker.com/_/postgres)
 
 -  [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
+
+-  [HADockerMon](https://github.com/philhawthorne/ha-dockermon)
 
   
 
@@ -223,19 +225,6 @@ Components
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
   
-  
-
-### Roadmap
-
-Environment
-
-- Remove Neo coolcam Smart plugs
-
- 
-Hass.io
-
-- Onboarding Playstation
-
  
 ### Screenshots
 ![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
