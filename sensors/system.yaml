@@ -8,6 +8,20 @@
   unit_of_measurement: '°C'
   value_template: '{{ value | multiply(0.001) | round(1) }}'
 
+#IPSEC status check
+- platform: command_line
+  name: IPSec
+  command: 'ping -W 1 -c 1 172.16.10.4  > /dev/null 2>&1 && echo online || echo offline'
+- platform: command_line
+  name: "IPSec ping time"
+  unit_of_measurement: 'ms'
+  command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
+
+#Latest snapshot 
+- platform: command_line
+  name: Latest HA Snapshot
+  command: 'ls /usr/share/hassio/backup/*.tar -halt | head -1'
+
 - platform: systemmonitor
   resources:
     - type: disk_use_percent
