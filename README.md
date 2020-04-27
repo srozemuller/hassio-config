@@ -5,7 +5,7 @@ In the basics my environment has the following configuration
 
   
 
-![hassioversion](https://img.shields.io/badge/hassio-0.108.5-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![hassioversion](https://img.shields.io/badge/hassio-0.108.9-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
 #### Local:
 
@@ -64,6 +64,8 @@ VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
 -  [Postgres](https://hub.docker.com/_/postgres)
 
 -  [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
+
+-  [HADockerMon](https://github.com/philhawthorne/ha-dockermon)
 
   
 
@@ -223,19 +225,6 @@ Components
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
   
-  
-
-### Roadmap
-
-Environment
-
-- Remove Neo coolcam Smart plugs
-
- 
-Hass.io
-
-- Onboarding Playstation
-
  
 ### Screenshots
 ![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
