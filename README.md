@@ -8,7 +8,7 @@ In the basics my environment has the following configuration
 
 ![hassioversion](https://img.shields.io/badge/hassio-0.108.9-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
-#### Local:
+#### Local with Raspbian Buster:
 
 -  [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
