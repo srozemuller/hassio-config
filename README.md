@@ -5,7 +5,11 @@ In the basics my environment has the following configuration
 
   
 
+<<<<<<< HEAD
 ![hassioversion](https://img.shields.io/badge/hassio-0.108.9-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+=======
+![hassioversion](https://img.shields.io/badge/hassio-0.108.5-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+>>>>>>> c67325bfc851332ca5b9fde5002c1d692d296ef2
 
 #### Local:
 
