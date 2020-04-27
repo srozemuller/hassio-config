@@ -33,4 +33,3 @@ home-assistant_v2.db
 home-assistant.log
 zones.yaml
 /arduino/settings.h
-nodered/automation-tab.json
