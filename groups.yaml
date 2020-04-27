@@ -1,49 +1,15 @@
-default_view:
-  name: Home
-  icon: mdi:home
-  view: true
-  entities:
-    - group.livingroom_lights
-    - group.souterain
-    - weather.weekvoorspelling
-    - media_player.woonkamer
-    
-################# WEATHER #################    
-weather_prediction_hour:
-  name: Weersvoorspelling
-  view: false
-  control: hidden #verbergen hoofd control in kaart
-  entities:
-    - sensor.dark_sky_temperature
-    - sensor.dark_sky_pressure
-    - sensor.dark_sky_precip_intensity_1
-    - sensor.dark_sky_precip_1   
-    - sensor.dark_sky_precip_probability_1
-    - sensor.dark_sky_precip_intensity_2
-    - sensor.dark_sky_precip_2  
-    - sensor.dark_sky_precip_probability_2
-view-weather:
-  name: HetWeer
-  view: true
-  icon: mdi:weather-partlycloudy
-  entities:  
-    - group.weatherstation
-    - weather.weekvoorspelling
-    - group.weather_prediction_hour
-
-weatherstation:
-  name: Weerstation
-  control: hidden
-  view: false
-  entities:  
-    - sensor.temperatuur
-    - sensor.luchtvochtigheid
-    - sensor.luchtdruk
-    - sensor.douwpunt
-    - sensor.batterij
+#default_view:
+#  name: Home
+#  icon: mdi:home
+#  entities:
+#    - group.livingroom_lights
+#    - group.souterain
+#    - weather.weekvoorspelling
+#    - media_player.woonkamer
+   
     
 ################# HOME #################    
-every_lights_inhome:
+all-lights:
   name: Alle lichten in huis
   icon: 'mdi:floor-lamp'
   entities:
@@ -56,20 +22,16 @@ every_lights_inhome:
     - light.toilet_beneden
     - switch.808204522cf43204195d #lamp kachel
     - switch.808204522cf4320418c2 # kleine lamp achter  
-livingroom_lights:
+    - light.zolder
+    - light.slaapkamer_daan
+livingroom:
   name: All Lights Livingroom
   icon: 'mdi:floor-lamp'
-  entities:
-    - switch.808204522cf43204195d #lamp kachel
-    - switch.808204522cf4320418c2 # lamp tv
-    - light.kleine_lamp
+  entities:  
     - light.woonkamer_voor
     - light.woonkamer_achter
-souterain:
-  name: Souterain
-  view: no
-  entities:
-    - switch.souterain
-    - input_number.souterain_pir_duration
-    - automation.licht_aan_in_souterain
+    - light.buiten
+    - light.kleine_lamp
+    - switch.808204522cf43204195d #lamp kachel
+    - switch.808204522cf4320418c2 # kleine lamp achter  
     

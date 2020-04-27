@@ -39,6 +39,10 @@
 #Nest
   - platform: badnest
 
+#OpenSky
+  - platform: opensky
+    radius: 500
+
 #Presense
 #  - platform: google_travel_time
 #    name: "Sander naar werk"
