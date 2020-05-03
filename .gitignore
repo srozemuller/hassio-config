@@ -15,7 +15,7 @@
 !*arduino
 !*nodered
 !*/custom_files/*.py
-!*/custom_files
+!*/custom_files/*
 
 # Ignore folders.
 .storage
