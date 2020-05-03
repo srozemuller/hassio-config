@@ -23,11 +23,12 @@ I've choosed running the script at 23:30 PM.
 The Python script also puts some output into textfiles for picking up by HomeAssistant. In these text files the filename and creation date is posted. By picking up these file by HomeAssistant I can use these input as a sensor. See folder Sensors->system.yaml for the whole config. 
 
 ```yaml
-#Latest snapshot
+#Latest snapshot 
 - platform: command_line
-name: Latest HA Snapshot date
-command: 'cat /config/custom_files/last_snapshotfiledate.txt'
+  name: Latest HA Snapshot date
+  command: 'cat /config/custom_files/snapshots/last_snapshotfiledate.txt'
 
 - platform: command_line
-name: Latest HA Snapshot file
-command: 'cat /config/custom_files/last_snapshotfilename.txt | sed "s:.*/::"'
+  name: Latest HA Snapshot file
+  command: 'cat /config/custom_files/snapshots/last_snapshotfilename.txt |  sed "s:.*/::"'
+
