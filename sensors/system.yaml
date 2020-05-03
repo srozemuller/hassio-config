@@ -16,14 +16,14 @@
   name: "IPSec ping time"
   unit_of_measurement: 'ms'
   command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
-
-<<<<<<< HEAD
 #Latest snapshot 
 - platform: command_line
-  name: Latest HA Snapshot
-  command: 'ls /usr/share/hassio/backup/*.tar -halt | head -1'
-=======
->>>>>>> c67325bfc851332ca5b9fde5002c1d692d296ef2
+  name: Latest HA Snapshot date
+  command: 'cat /config/custom_files/last_snapshotfiledate.txt'
+
+- platform: command_line
+  name: Latest HA Snapshot file
+  command: 'cat /config/custom_files/last_snapshotfilename.txt |  sed "s:.*/::"'
 
 - platform: systemmonitor
   resources:
@@ -92,3 +92,4 @@
   resource: http://172.16.1.241:8126/container/addon_core_mosquitto
   name: 'Mosquitto State'
   value_template: '{{ value_json.state}}'   
+
