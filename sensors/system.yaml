@@ -92,3 +92,4 @@
   resource: http://172.16.1.241:8126/container/addon_core_mosquitto
   name: 'Mosquitto State'
   value_template: '{{ value_json.state}}'   
+
