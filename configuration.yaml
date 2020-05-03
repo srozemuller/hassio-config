@@ -1,0 +1,83 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  # longitude: !secret longitude
+  # latitude: !secret latitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Amsterdam
+  auth_providers:
+    - type: trusted_networks
+      trusted_networks:
+        - 172.16.1.0/24
+        - fd00::/8
+        - ::1
+      trusted_users:
+        172.16.1.245: !secret ipadminiuser
+      allow_bypass_login: true
+    - type: homeassistant 
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+recorder:
+  purge_keep_days: 90
+  db_url: !secret postgres_url
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+http:
+  ssl_certificate: !secret ssl_certificate
+  ssl_key: !secret ssl_key
+  base_url: !secret base_url
+  
+#lovelace:
+#  mode: yaml
+#homekit:
+
+#device_tracker:
+
+script: !include scripts.yaml
+group: !include groups.yaml
+zone: !include zones.yaml
+frontend: 
+  themes: !include_dir_merge_named themes
+
+# Sensors
+sensor: !include_dir_merge_list sensors
+binary_sensor:
+  - platform: workday
+    country: NL  
+# Climate entities
+climate: !include_dir_merge_list climate
+
+# Input parts
+input_boolean: !include inputbooleans.yaml
+input_number: !include inputnumbers.yaml
+
+
+# Integrations
+ios: #!include_dir_merge_list notifications
+shopping_list:
+badnest:
+  issue_token: !secret nest_token
+  cookie: !secret nest_cookie
+  region: nl
+calendar:
+  - platform: caldav
+    username: !secret google_user
+    password: !secret app_sander
+    url: https://caldav.icloud.com
+tado:
+  username: !secret tado_user
+  password: !secret tado_pass
+tuya:
+  username: !secret tuya_user
+  password: !secret tuya_pass
+  country_code: 31
+  platform: smart_life
+spotify:
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret

@@ -1,0 +1,81 @@
+#Battery check
+  - platform: min_max
+    type: min
+    name: "Lowest Battery"
+    entity_ids:
+      - sensor.0x14b457fffec68833_battery # Souterain
+      - sensor.0x00158d00040e0c16_battery # Kleine raam beneden
+    
+#Water softener
+  - platform: mqtt
+    state_topic: "/watersoftner/sensor/salt"
+    name: "Salt level"
+    unit_of_measurement: 'cm'
+    value_template: '{{ (90 - (states.sensor.salt_level.state|int))|round(1) }}'
+  - platform: template
+    sensors:
+      salt_level_percent:
+        friendly_name: "Salt available"
+        unit_of_measurement: '%'
+        value_template: '{{ ((states.sensor.salt_level.state|int) / 90 *100)|round(1) }}'
+  - platform: template
+    sensors:
+      salt_level_last_update:
+        friendly_name: "Salt Level Last Update"
+        value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
+  
+#DarkSky
+  - platform: darksky
+    api_key: !secret dark_api
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+#Nest
+  - platform: badnest
+
+#OpenSky
+  - platform: opensky
+    radius: 500
+
+#Presense
+#  - platform: google_travel_time
+#    name: "Sander naar werk"
+#    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
+#    origin: person.sander
+#    destination: zone.werk_sander
+#    scan_interval: 600
+#  - platform: google_travel_time
+#    name: "Sander naar Deventer"
+#    api_key: AIzaSyBoWLETptPMg6A8a9bpCYebAnczzLAV0jw
+#    origin: person.sander
+#    destination: zone.sander_deventer
+#    scan_interval: 600
+
+ 
+#HUE Hack
+  - platform: rest 
+    resource: !secret hue_resource
+    name: 'Hue buttons'
+    value_template: '{{ value_json.state.buttonevent }}' 
+    scan_interval: 1 
+  - platform: rest 
+    resource: !secret hue_resource 
+    name: 'Hue Last update'
+    value_template: '{{ value_json.state.lastupdated }}' 
+    scan_interval: 1 
+  - platform: template
+    sensors:
+      light_toilet_last_change:
+        friendly_name: "Toilet Last Change"
+        value_template: '{{ (as_timestamp(states.light.toilet.last_changed)) | timestamp_custom("%A, %d %h %H:%M") }}'
+  - platform: template
+    sensors:
+      light_toilet_state:
+        friendly_name: "Toilet Light State"
+        value_template: "{{states('light.toilet')}}"
