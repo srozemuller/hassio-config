@@ -1,0 +1,1401 @@
+[
+    {
+        "id": "b742b291.77ac6",
+        "type": "tab",
+        "label": "Lights",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ad17e9dc.b965f8",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "getToiletLightState",
+        "server": "a378e9a3.f5b1b8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "light.toilet_beneden",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 110,
+        "y": 80,
+        "wires": [
+            [
+                "ea9d7f88.a8e6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ea9d7f88.a8e6",
+        "type": "stoptimer",
+        "z": "b742b291.77ac6",
+        "duration": "5",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "7eefb106.b92e8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "7eefb106.b92e8",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "TurnOffToiletLight",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.toilet_beneden",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 590,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e2398ee9.7a526",
+        "type": "comment",
+        "z": "b742b291.77ac6",
+        "name": "Toilet light turn of in 10 minutes",
+        "info": "",
+        "x": 150,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "5222fe22.9c5da",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOnAllLights",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "homeassistant",
+        "service": "turn_on",
+        "entityId": "group.livingroom_lights",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 580,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f0af048e.71e428",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOffAllLights",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "entityId": "group.livingroom_lights, light.spotjewashok, light.souterain, light.buiten",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 580,
+        "y": 140,
+        "wires": [
+            [
+                "62d884f4.c1114c"
+            ]
+        ]
+    },
+    {
+        "id": "698f481f.b4b7d8",
+        "type": "bigtimer",
+        "z": "b742b291.77ac6",
+        "outtopic": "",
+        "outpayload1": "on",
+        "outpayload2": "off",
+        "name": "Weekday",
+        "comment": "default weekday light automation",
+        "lat": "52.476719",
+        "lon": "6.571540",
+        "starttime": "5004",
+        "endtime": "1320",
+        "starttime2": "5004",
+        "endtime2": "1320",
+        "startoff": "-15",
+        "endoff": 0,
+        "startoff2": "30",
+        "endoff2": 0,
+        "offs": 0,
+        "outtext1": "on",
+        "outtext2": "off",
+        "timeout": 1440,
+        "sun": false,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": false,
+        "sat": false,
+        "jan": true,
+        "feb": true,
+        "mar": true,
+        "apr": true,
+        "may": true,
+        "jun": true,
+        "jul": true,
+        "aug": true,
+        "sep": true,
+        "oct": true,
+        "nov": true,
+        "dec": true,
+        "day1": 0,
+        "month1": 0,
+        "day2": 0,
+        "month2": 0,
+        "day3": 0,
+        "month3": 0,
+        "day4": 0,
+        "month4": 0,
+        "day5": 0,
+        "month5": 0,
+        "day6": 0,
+        "month6": 0,
+        "d1": 0,
+        "w1": 0,
+        "d2": 0,
+        "w2": 0,
+        "d3": 0,
+        "w3": 0,
+        "d4": 0,
+        "w4": 0,
+        "d5": 0,
+        "w5": 0,
+        "d6": 0,
+        "w6": 0,
+        "xday1": 0,
+        "xmonth1": 0,
+        "xday2": 0,
+        "xmonth2": 0,
+        "xday3": 0,
+        "xmonth3": 0,
+        "xday4": 0,
+        "xmonth4": 0,
+        "xday5": 0,
+        "xmonth5": 0,
+        "xday6": 0,
+        "xmonth6": 0,
+        "xd1": 0,
+        "xw1": 0,
+        "xd2": 0,
+        "xw2": 0,
+        "xd3": 0,
+        "xw3": 0,
+        "xd4": 0,
+        "xw4": 0,
+        "xd5": 0,
+        "xw5": 0,
+        "xd6": 0,
+        "xw6": 0,
+        "suspend": false,
+        "random": false,
+        "repeat": false,
+        "atstart": true,
+        "odd": false,
+        "even": false,
+        "x": 80,
+        "y": 420,
+        "wires": [
+            [
+                "b8106310.a284"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "ab7c30ea.6df77",
+        "type": "comment",
+        "z": "b742b291.77ac6",
+        "name": "Automated: Turn lights on and off",
+        "info": "",
+        "x": 150,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "b8106310.a284",
+        "type": "switch",
+        "z": "b742b291.77ac6",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 250,
+        "y": 500,
+        "wires": [
+            [
+                "d4ba97e1.785408",
+                "82e6b001.219cc"
+            ],
+            [
+                "f3cfeb4d.5c2448"
+            ]
+        ]
+    },
+    {
+        "id": "84785252.46597",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOffAllLights",
+        "server": "a378e9a3.f5b1b8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "entityId": "group.all_lights",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 860,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf51a28b.4d7f8",
+        "type": "bigtimer",
+        "z": "b742b291.77ac6",
+        "outtopic": "",
+        "outpayload1": "on",
+        "outpayload2": "off",
+        "name": "Weekend",
+        "comment": "default weekend light automation",
+        "lat": "52.476719",
+        "lon": "6.571540",
+        "starttime": "5004",
+        "endtime": "1410",
+        "starttime2": "5004",
+        "endtime2": "1410",
+        "startoff": "-15",
+        "endoff": 0,
+        "startoff2": "30",
+        "endoff2": 0,
+        "offs": 0,
+        "outtext1": "on",
+        "outtext2": "off",
+        "timeout": 1440,
+        "sun": true,
+        "mon": false,
+        "tue": false,
+        "wed": false,
+        "thu": false,
+        "fri": true,
+        "sat": true,
+        "jan": true,
+        "feb": true,
+        "mar": true,
+        "apr": true,
+        "may": true,
+        "jun": true,
+        "jul": true,
+        "aug": true,
+        "sep": true,
+        "oct": true,
+        "nov": true,
+        "dec": true,
+        "day1": 0,
+        "month1": 0,
+        "day2": 0,
+        "month2": 0,
+        "day3": 0,
+        "month3": 0,
+        "day4": 0,
+        "month4": 0,
+        "day5": 0,
+        "month5": 0,
+        "day6": 0,
+        "month6": 0,
+        "d1": 0,
+        "w1": 0,
+        "d2": 0,
+        "w2": 0,
+        "d3": 0,
+        "w3": 0,
+        "d4": 0,
+        "w4": 0,
+        "d5": 0,
+        "w5": 0,
+        "d6": 0,
+        "w6": 0,
+        "xday1": 0,
+        "xmonth1": 0,
+        "xday2": 0,
+        "xmonth2": 0,
+        "xday3": 0,
+        "xmonth3": 0,
+        "xday4": 0,
+        "xmonth4": 0,
+        "xday5": 0,
+        "xmonth5": 0,
+        "xday6": 0,
+        "xmonth6": 0,
+        "xd1": 0,
+        "xw1": 0,
+        "xd2": 0,
+        "xw2": 0,
+        "xd3": 0,
+        "xw3": 0,
+        "xd4": 0,
+        "xw4": 0,
+        "xd5": 0,
+        "xw5": 0,
+        "xd6": 0,
+        "xw6": 0,
+        "suspend": false,
+        "random": false,
+        "repeat": false,
+        "atstart": true,
+        "odd": false,
+        "even": false,
+        "x": 80,
+        "y": 620,
+        "wires": [
+            [
+                "b8106310.a284"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "d9a6367f.2a8348",
+        "type": "switch",
+        "z": "b742b291.77ac6",
+        "name": "Check HUE state",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "4002",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "1002",
+                "vt": "str"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 2,
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "f0af048e.71e428"
+            ],
+            [
+                "5222fe22.9c5da"
+            ]
+        ]
+    },
+    {
+        "id": "863d7950.4ac618",
+        "type": "comment",
+        "z": "b742b291.77ac6",
+        "name": "Weekend off at 23:30",
+        "info": "",
+        "x": 120,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "bdb38412.0d8b18",
+        "type": "comment",
+        "z": "b742b291.77ac6",
+        "name": "Week off at 22:00",
+        "info": "",
+        "x": 100,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "d4ba97e1.785408",
+        "type": "trigger",
+        "z": "b742b291.77ac6",
+        "op1": "{\"transitionTime\":900,\"brightness\":25}",
+        "op2": "0",
+        "op1type": "json",
+        "op2type": "str",
+        "duration": "1",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "name": "push hue settings",
+        "x": 450,
+        "y": 440,
+        "wires": [
+            [
+                "93b235cb.00ea08",
+                "be8a750e.8f4db8"
+            ]
+        ]
+    },
+    {
+        "id": "93b235cb.00ea08",
+        "type": "hue-group",
+        "z": "b742b291.77ac6",
+        "name": "Woonkamer",
+        "bridge": "5c1223a1.4597fc",
+        "groupid": "1",
+        "colornamer": true,
+        "x": 750,
+        "y": 380,
+        "wires": [
+            [
+                "b43b1bb6.f06738"
+            ]
+        ]
+    },
+    {
+        "id": "be8a750e.8f4db8",
+        "type": "hue-group",
+        "z": "b742b291.77ac6",
+        "name": "Buiten",
+        "bridge": "5c1223a1.4597fc",
+        "groupid": "2",
+        "colornamer": true,
+        "x": 730,
+        "y": 440,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e13711a.d5e4a",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOnNotHueLights",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.lamp_tv, switch.808204522cf4320418c2, switch.808204522cf43204195d",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 780,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3cfeb4d.5c2448",
+        "type": "api-current-state",
+        "z": "b742b291.77ac6",
+        "name": "if manual_mode is on",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "input_boolean.turn_on_manual",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 460,
+        "y": 560,
+        "wires": [
+            [],
+            [
+                "84ed4da1.ea454"
+            ]
+        ]
+    },
+    {
+        "id": "62d884f4.c1114c",
+        "type": "api-current-state",
+        "z": "b742b291.77ac6",
+        "name": "manual_mode",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "outputs": 2,
+        "halt_if": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "override_topic": false,
+        "entity_id": "input_boolean.turn_on_manual",
+        "state_type": "str",
+        "state_location": "payload",
+        "override_payload": "msg",
+        "entity_location": "data",
+        "override_data": "msg",
+        "blockInputOverrides": false,
+        "x": 800,
+        "y": 140,
+        "wires": [
+            [
+                "d1bfbf35.9325c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "d1bfbf35.9325c",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOffManualMode",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "entityId": "input_boolean.turn_on_manual",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1040,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "10b73764.893a29",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "TurnOffZolder",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.zolder, light.zolder_2",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 640,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c61ce37.0c15b2",
+        "type": "stoptimer",
+        "z": "b742b291.77ac6",
+        "duration": "30",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 360,
+        "y": 700,
+        "wires": [
+            [
+                "10b73764.893a29"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "6d097d61.f1a974",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "Motion Souterain",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "entityidfilter": "binary_sensor.0x14b457fffec68833_occupancy",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 900,
+        "wires": [
+            [
+                "83ea3bc0.2a7918",
+                "42e0148c.f79c0c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "83ea3bc0.2a7918",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "TurnOnLightSouterain",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.souterain",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 780,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "42e0148c.f79c0c",
+        "type": "stoptimer",
+        "z": "b742b291.77ac6",
+        "duration": "5",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 420,
+        "y": 960,
+        "wires": [
+            [
+                "ec918e67.9e9c4"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "ec918e67.9e9c4",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "TurnOffSouterainLight",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.souterain, light.licht_souterain",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 780,
+        "y": 960,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ccd12ec5.74f52",
+        "type": "comment",
+        "z": "b742b291.77ac6",
+        "name": "Souterain light turn of in 5 minutes",
+        "info": "",
+        "x": 160,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "82e6b001.219cc",
+        "type": "stoptimer",
+        "z": "b742b291.77ac6",
+        "duration": "15",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 440,
+        "y": 500,
+        "wires": [
+            [
+                "4e13711a.d5e4a"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "136e18d4.77d927",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "Check Vac.mode state",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "entityidfilter": "input_boolean.turn_on_vacationmode",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 120,
+        "y": 1060,
+        "wires": [
+            [
+                "bbc679ba.613b68"
+            ]
+        ]
+    },
+    {
+        "id": "bbc679ba.613b68",
+        "type": "switch",
+        "z": "b742b291.77ac6",
+        "name": "vacationmode state",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 370,
+        "y": 1060,
+        "wires": [
+            [
+                "8d8efd70.36efd"
+            ],
+            [
+                "c806982e.78dd58"
+            ]
+        ]
+    },
+    {
+        "id": "7ce95da9.05e814",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOffAllLights",
+        "server": "a378e9a3.f5b1b8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "homeassistant",
+        "service": "turn_off",
+        "entityId": "group.every_lights_inhome",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 860,
+        "y": 1020,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7b5aa8f9.175c38",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "turnOnNotHueLights",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "switch",
+        "service": "turn_on",
+        "entityId": "switch.808204522cf4320418c2, switch.808204522cf43204195d",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 900,
+        "y": 1080,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c806982e.78dd58",
+        "type": "time-range-switch",
+        "z": "b742b291.77ac6",
+        "name": "Evening",
+        "lat": "52.46083",
+        "lon": "6.56528",
+        "startTime": "sunset",
+        "endTime": "00:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 560,
+        "y": 1080,
+        "wires": [
+            [
+                "7b5aa8f9.175c38"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "8d8efd70.36efd",
+        "type": "time-range-switch",
+        "z": "b742b291.77ac6",
+        "name": "between sunrise and sunset",
+        "lat": "52.46083",
+        "lon": "6.56528",
+        "startTime": "sunrise",
+        "endTime": "sunset",
+        "startOffset": 0,
+        "endOffset": "-30",
+        "x": 620,
+        "y": 1020,
+        "wires": [
+            [
+                "7ce95da9.05e814"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "95870480.7f24a8",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "brightness woonkamer",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_number.lights_brightness",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 120,
+        "y": 1160,
+        "wires": [
+            [
+                "83e5f17a.b6bb2"
+            ]
+        ]
+    },
+    {
+        "id": "a9d285ba.56d678",
+        "type": "hue-group",
+        "z": "b742b291.77ac6",
+        "name": "Woonkamer",
+        "bridge": "5c1223a1.4597fc",
+        "groupid": "1",
+        "colornamer": true,
+        "skipevents": false,
+        "x": 590,
+        "y": 1160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "83e5f17a.b6bb2",
+        "type": "function",
+        "z": "b742b291.77ac6",
+        "name": "set brightness payload",
+        "func": "msg.payload = {\"brightness\": msg.payload};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 1160,
+        "wires": [
+            [
+                "a9d285ba.56d678"
+            ]
+        ]
+    },
+    {
+        "id": "9154ac9c.fc3cb",
+        "type": "function",
+        "z": "b742b291.77ac6",
+        "name": "get manual brightness",
+        "func": "msg.payload = {\"brightness\": msg.payload};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 260,
+        "wires": [
+            [
+                "93b235cb.00ea08"
+            ]
+        ]
+    },
+    {
+        "id": "ef11b1d1.59bd5",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "brightness",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "entityidfilter": "input_number.lights_brightness",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 80,
+        "y": 260,
+        "wires": [
+            [
+                "9154ac9c.fc3cb"
+            ]
+        ]
+    },
+    {
+        "id": "8ef15faa.af583",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "set brightness slider",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "input_number",
+        "service": "set_value",
+        "entityId": "input_number.lights_brightness",
+        "data": "{\"value\":\"msg.payload\"}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 1180,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b43b1bb6.f06738",
+        "type": "function",
+        "z": "b742b291.77ac6",
+        "name": "set value to msg",
+        "func": "msg.payload = { data: { 'value': msg.payload.brightness } };\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 380,
+        "wires": [
+            [
+                "8ef15faa.af583"
+            ]
+        ]
+    },
+    {
+        "id": "84ed4da1.ea454",
+        "type": "ha-get-entities",
+        "z": "b742b291.77ac6",
+        "server": "d9811aec.14d0c8",
+        "name": "",
+        "rules": [
+            {
+                "property": "entity_id",
+                "logic": "starts_with",
+                "value": "light.",
+                "valueType": "str"
+            },
+            {
+                "property": "state",
+                "logic": "is",
+                "value": "on",
+                "valueType": "str"
+            }
+        ],
+        "output_type": "array",
+        "output_empty_results": false,
+        "output_location_type": "msg",
+        "output_location": "payload",
+        "output_results_count": 1,
+        "x": 670,
+        "y": 560,
+        "wires": [
+            [
+                "84785252.46597"
+            ]
+        ]
+    },
+    {
+        "id": "c14435ed.f45078",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "hue remote",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "entityidfilter": "sensor.hue_buttons",
+        "entityidfiltertype": "exact",
+        "outputinitially": true,
+        "state_type": "str",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 90,
+        "y": 180,
+        "wires": [
+            [
+                "d9a6367f.2a8348"
+            ]
+        ]
+    },
+    {
+        "id": "94af0858.410bd8",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "daan slaapkamer",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "light.slaapkamer_daan",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 100,
+        "y": 760,
+        "wires": [
+            [
+                "700bee93.b70b8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "700bee93.b70b8",
+        "type": "stoptimer",
+        "z": "b742b291.77ac6",
+        "duration": "30",
+        "units": "Minute",
+        "payloadtype": "num",
+        "payloadval": "0",
+        "name": "",
+        "x": 360,
+        "y": 760,
+        "wires": [
+            [
+                "39699914.516aa6"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "39699914.516aa6",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "TurnOffZolder",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": true,
+        "service_domain": "light",
+        "service": "turn_off",
+        "entityId": "light.slaapkamer_daan",
+        "data": "",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 640,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "184a7e6e.e40912",
+        "type": "debug",
+        "z": "b742b291.77ac6",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 390,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "af9738ac.738588",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "souterain",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "light.souterain",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 80,
+        "y": 960,
+        "wires": [
+            [
+                "42e0148c.f79c0c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cf313aa4.2449d8",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "Light zolder",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "light.zolder",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "str",
+        "haltifstate": "on",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 2,
+        "output_only_on_state_change": true,
+        "x": 90,
+        "y": 700,
+        "wires": [
+            [
+                "c61ce37.0c15b2",
+                "184a7e6e.e40912"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "49e8e44c.6eb65c",
+        "type": "server-state-changed",
+        "z": "b742b291.77ac6",
+        "name": "brightness keuken",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "exposeToHomeAssistant": false,
+        "haConfig": [
+            {
+                "property": "name",
+                "value": ""
+            },
+            {
+                "property": "icon",
+                "value": ""
+            }
+        ],
+        "entityidfilter": "input_number.lights_kitchen_brightness",
+        "entityidfiltertype": "exact",
+        "outputinitially": false,
+        "state_type": "num",
+        "haltifstate": "",
+        "halt_if_type": "str",
+        "halt_if_compare": "is",
+        "outputs": 1,
+        "output_only_on_state_change": true,
+        "x": 110,
+        "y": 1240,
+        "wires": [
+            [
+                "4197e081.21d43"
+            ]
+        ]
+    },
+    {
+        "id": "97b4e66f.947ee8",
+        "type": "api-call-service",
+        "z": "b742b291.77ac6",
+        "name": "",
+        "server": "d9811aec.14d0c8",
+        "version": 1,
+        "debugenabled": false,
+        "service_domain": "light",
+        "service": "turn_on",
+        "entityId": "light.keuken",
+        "data": "{{msg.payload}}",
+        "dataType": "json",
+        "mergecontext": "",
+        "output_location": "",
+        "output_location_type": "none",
+        "mustacheAltTags": false,
+        "x": 610,
+        "y": 1240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4197e081.21d43",
+        "type": "function",
+        "z": "b742b291.77ac6",
+        "name": "create data object",
+        "func": "newmsg = {};\n\n    brightness = msg.payload\n\n\nmsg.data = {\"brightness\":brightness};\n\nnewmsg.payload = { data: {\"brightness\":brightness} };\n\nreturn newmsg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 1240,
+        "wires": [
+            [
+                "97b4e66f.947ee8"
+            ]
+        ]
+    },
+    {
+        "id": "a378e9a3.f5b1b8",
+        "type": "server",
+        "z": "",
+        "name": "Hassio",
+        "legacy": false,
+        "addon": true,
+        "rejectUnauthorizedCerts": true,
+        "ha_boolean": "y|yes|true|on|home|open",
+        "connectionDelay": true,
+        "cacheJson": true
+    },
+    {
+        "id": "d9811aec.14d0c8",
+        "type": "server",
+        "z": "",
+        "name": "Home Assistant"
+    },
+    {
+        "id": "5c1223a1.4597fc",
+        "type": "hue-bridge",
+        "z": "",
+        "name": "Philips hue",
+        "bridge": "172.16.1.221",
+        "key": "NrKMHmYgiKj8BjuyN7qe6P6h5w-ndpFFKfvQXcMR",
+        "interval": "3000",
+        "disableupdates": false
+    }
+]
