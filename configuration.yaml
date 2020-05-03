@@ -37,7 +37,7 @@ http:
 #  mode: yaml
 #homekit:
 
-device_tracker:
+#device_tracker:
 
 script: !include scripts.yaml
 group: !include groups.yaml
