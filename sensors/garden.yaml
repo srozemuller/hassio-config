@@ -1,0 +1,10 @@
+  - platform: mqtt
+    state_topic: "/garden/irrigation/waterflow_liters"
+    name: "Liters flowed"
+    unit_of_measurement: 'liter'
+    value_template: '{{ (states.sensor.liters_flowed.state|int)|round(1) }}'
+  - platform: mqtt
+    state_topic: "/garden/irrigation/flowrate"
+    name: "Flow rate"
+    unit_of_measurement: 'liter/m'
+    value_template: '{{ (states.sensor.flow_rate.state|int)|round(1) }}'
