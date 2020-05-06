@@ -1,0 +1,40 @@
+  - platform: rova
+    zip_code: 7686CM
+    house_number: 69
+    #house_number_suffix: HOUSE_NUMBER_SUFFIX
+    name: Rova
+    monitored_conditions:
+      - bio
+      - paper
+      - plastic
+      - residual
+      
+#Next Garbage sensor
+  - platform: template
+    sensors:
+      next_garbage:
+        friendly_name: "Next Garbage"
+        value_template: >-
+          {%- if now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_plastic.state) - 	(24*3600)) | timestamp_custom("%Y-%m-%d")-%}
+            plastic
+          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_bio.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
+          	bio
+          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_residual.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
+          	residual
+          {% else %}
+          	nothing
+          {%endif%}
+        icon_template: >-
+          {%- if now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_plastic.state) - 	(24*3600)) | timestamp_custom("%Y-%m-%d")-%}
+            mdi:recycle
+          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_bio.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
+          	mdi:food-apple
+          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_residual.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
+          	mdi:dump-truck
+          {% else %}
+          	mdi:circle-off-outline
+          {%endif%}
+
+
+       
+       

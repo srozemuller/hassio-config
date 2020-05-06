@@ -1,0 +1,95 @@
+- platform: version
+
+- platform: cpuspeed
+
+- platform: command_line
+  name: CPU Temperature
+  command: 'cat /sys/class/thermal/thermal_zone0/temp'
+  unit_of_measurement: '°C'
+  value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+#IPSEC status check
+- platform: command_line
+  name: IPSec
+  command: 'ping -W 1 -c 1 172.16.10.4  > /dev/null 2>&1 && echo online || echo offline'
+- platform: command_line
+  name: "IPSec ping time"
+  unit_of_measurement: 'ms'
+  command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
+#Latest snapshot 
+- platform: command_line
+  name: Latest HA Snapshot date
+  command: 'cat /config/custom_files/snapshots/last_snapshotfiledate.txt'
+
+- platform: command_line
+  name: Latest HA Snapshot file
+  command: 'cat /config/custom_files/snapshots/last_snapshotfilename.txt |  sed "s:.*/::"'
+
+- platform: systemmonitor
+  resources:
+    - type: disk_use_percent
+      arg: /
+    - type: disk_use
+      arg: /
+    - type: disk_free
+      arg: /
+    - type: memory_use_percent
+    - type: memory_use
+    - type: memory_free
+    - type: processor_use
+    - type: load_1m
+    - type: load_5m
+    - type: load_15m
+    - type: last_boot
+    - type: ipv4_address
+      arg: eth0
+
+- platform: rest
+  resource: http://172.16.10.4:8126/container/some-postgres
+  name: 'Azure Postgres State' 
+  value_template: '{{ value_json.state}}'
+- platform: rest
+  resource: http://172.16.10.4:8126/container/some-postgres 
+  name: 'Azure Postgres Uptime'
+  value_template: '{{ value_json.status}}'
+- platform: rest
+  resource: http://172.16.10.4:8126/container/portainer
+  name: 'Azure Portainer State' 
+  value_template: '{{ value_json.state}}'
+- platform: rest
+  resource: http://172.16.10.4:8126/container/portainer
+  name: 'Azure Portainer Uptime'
+  value_template: '{{ value_json.status}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/homeassistant
+  name: 'HomeAssistant Uptime'
+  value_template: '{{ value_json.status}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/homeassistant
+  name: 'HomeAssistant State'
+  value_template: '{{ value_json.state}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/portainer
+  name: 'Portainer Uptime'
+  value_template: '{{ value_json.status}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/portainer
+  name: 'Portainer State'
+  value_template: '{{ value_json.state}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/dsmr
+  name: 'DSMR Uptime'
+  value_template: '{{ value_json.status}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/dsmr
+  name: 'DSMR State'
+  value_template: '{{ value_json.state}}' 
+- platform: rest
+  resource: http://172.16.1.241:8126/container/addon_core_mosquitto
+  name: 'Mosquitto Uptime'
+  value_template: '{{ value_json.status}}'
+- platform: rest
+  resource: http://172.16.1.241:8126/container/addon_core_mosquitto
+  name: 'Mosquitto State'
+  value_template: '{{ value_json.state}}'   
+

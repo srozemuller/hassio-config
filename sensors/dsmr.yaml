@@ -1,0 +1,35 @@
+  - platform: mqtt
+    state_topic: "dsmr/json"
+    name: "Currenty Delivered"
+    unit_of_measurement: 'watt'
+    value_template: "{{ value_json.electricity_currently_delivered }}"    
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Day Consumption"
+    unit_of_measurement: 'Kwh'
+    value_template: "{{ value_json.electricity_merged }}"
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Electricity1"
+    unit_of_measurement: 'Kwh'
+    value_template: "{{ value_json.electricity1 }}"
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Electricity2"
+    unit_of_measurement: 'Kwh'
+    value_template: "{{ value_json.electricity2 }}"
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Electricity1 Cost"
+    unit_of_measurement: 'Euro'
+    value_template: "{{ value_json.electricity1_cost }}"
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Electricity2 Cost"
+    unit_of_measurement: 'Euro'
+    value_template: "{{ value_json.electricity2_cost }}"
+  - platform: mqtt
+    state_topic: "dsmr/day-consumption"
+    name: "Electricity total cost"
+    unit_of_measurement: 'Euro'
+    value_template: "{{ value_json.electricity_cost_merged }}"
