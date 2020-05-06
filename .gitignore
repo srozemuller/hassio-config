@@ -14,7 +14,7 @@
 !themes
 !*arduino
 !*nodered
-!*custom_files/*
+!*custom_files
 
 # Ignore folders.
 .storage
