@@ -1,0 +1,17 @@
+  - platform: mqtt
+    state_topic: "garden/irrigation/current_liters"
+    name: "Current Liters"
+    unit_of_measurement: 'liter'
+  - platform: mqtt
+    state_topic: "garden/irrigation/total_liters"
+    name: "Total Liters"
+    unit_of_measurement: 'liter'
+  - platform: mqtt
+    state_topic: "garden/irrigation/flowrate"
+    name: "Flow rate"
+    unit_of_measurement: 'liter/m'
+  - platform: mqtt
+    state_topic: "garden/irrigation/pump_status"
+    name: "Pump Status"
+
+       
