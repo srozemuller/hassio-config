@@ -1,7 +1,7 @@
 /*
-  YF‐G1 Water Flow Sensor
+  YF‐ S201 Water Flow Sensor
   Water Flow Sensor output processed to read in litres/hour
-  By Sander Rozemuller 
+  Adaptation Courtesy: hobbytronics.co.uk
 */
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
@@ -13,6 +13,7 @@ float vol = 0.0, l_minute, currentVolume;
 unsigned char flowsensor = 4; // Sensor Input
 unsigned long currentTime;
 unsigned long cloopTime;
+bool pumpRunning;
 int mqttDelayCounter = 0; // count in the loop till this value is reached. Then it will send the value to MQTT. Flood prevention
 void flow () // Interrupt function
 {
@@ -24,6 +25,9 @@ PubSubClient client(espClient);
 
 void setup()
 {
+  // digitalWrite(LED_BUILTIN, HIGH);
+  // initialize digital pin LED_BUILTIN as an output.
+  //pinMode(LED_BUILTIN, OUTPUT);
   Serial.print("Connecting to ");
   Serial.println(ssid);
   WiFi.begin(ssid, password);
@@ -81,17 +85,18 @@ void loop ()
   // Let MQTT do it's thing
   client.loop();
   currentTime = millis();
-//  mqttSend = false;
+  //  mqttSend = false;
 
   // Every second, calculate and print litres/hour
   if (currentTime >= (cloopTime + 1000))
   {
-      mqttDelayCounter++;
-      Serial.print("delaycounter:");
+    mqttDelayCounter++;
+    Serial.print("delaycounter:");
     Serial.println(mqttDelayCounter);
     cloopTime = currentTime; // Updates cloopTime
 
     if (flow_frequency != 0) {
+      pumpRunning = true;
       // Pulse frequency (Hz) = 7.5Q, Q is flow rate in L/min.
       l_minute = (flow_frequency / 4.8); // (Pulse frequency x 60 min) / 7.5Q = flowrate in L/hour
       Serial.print("Rate: ");
@@ -108,20 +113,23 @@ void loop ()
       Serial.println(" L/Sec");
       Serial.print("currentVolume:");
       Serial.println(currentVolume);
+      Serial.print("pumpstatus:");
+      Serial.println(pumpRunning);
       // Every 60 seconds, send value to MQTT
       if (mqttDelayCounter == 60 )
       {
         Serial.print("Send to MQTT ");
         Serial.print(mqttDelayCounter);
-       Serial.println("set counter back to 0");
-       mqttDelayCounter = 0;
+        Serial.println("set counter back to 0");
+        mqttDelayCounter = 0;
         client.publish(mqtt_pub_topic_total_liters, String(vol).c_str(), true);
         client.publish(mqtt_pub_topic_flowrate, String(l_minute).c_str(), true);
         client.publish(mqtt_pub_topic_current_liters, String(currentVolume).c_str(), true);
-        client.publish(mqtt_pub_topic_pump_status, String("Running").c_str(), true);
+        client.publish(mqtt_pub_topic_pump_status, String(pumpRunning).c_str(), true);
       }
     }
     else {
+      digitalWrite(LED_BUILTIN, HIGH);
       Serial.println(" flow rate = 0 ");
       Serial.print("Rate: ");
       Serial.print( flow_frequency );
@@ -129,18 +137,21 @@ void loop ()
       Serial.print("Vol:");
       Serial.print(vol);
       Serial.print(" L");
-            Serial.print("current:");
+      Serial.print("current:");
       Serial.print(currentVolume);
+      Serial.print("pumpstatus:");
+      Serial.println(pumpRunning);
       if (mqttDelayCounter == 60 )
       {
         Serial.print("Send to MQTT ");
         Serial.print(mqttDelayCounter);
-       Serial.println("set counter back to 0");
-       mqttDelayCounter = 0;
+        Serial.println("set counter back to 0");
+        mqttDelayCounter = 0;
         client.publish(mqtt_pub_topic_total_liters, String(vol).c_str(), true);
         client.publish(mqtt_pub_topic_flowrate, String(l_minute).c_str(), true);
         client.publish(mqtt_pub_topic_current_liters, String(currentVolume).c_str(), true);
-        client.publish(mqtt_pub_topic_pump_status, String("Stopped").c_str(), true);
+        client.publish(mqtt_pub_topic_pump_status, String(pumpRunning).c_str(), true);
+        pumpRunning = false; // when flow is stopped.. first send last value then reset.
         currentVolume = 0; // when flow is stopped.. first send last value then reset.
       }
     }
