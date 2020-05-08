@@ -23,4 +23,9 @@
       irrigation_last_contact:
         friendly_name: "Irrigation last contact"
         value_template: '{{as_timestamp(states.sensor.pump_status.last_updated)| timestamp_custom("%A, %d %h %H:%M", True)}}'
-       
+  - platform: template
+    sensors:
+      saved_water_costs:
+        friendly_name: "Saved Water Costs"
+        value_template: '{{ ((states.sensor.total_liters.state|int) * 0,00104)|round(1) }}'
+             
