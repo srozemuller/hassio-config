@@ -14,7 +14,62 @@ See the [garden.yaml](https://github.com/srozemuller/hassio-config/blob/master/s
 #### Home-Assistant card example
 ![home-assistant cards](https://user-images.githubusercontent.com/43162899/81440894-12257c80-9171-11ea-9ab5-f24d38ab28b5.png)
 
-#### Hardware
-![enter image description here](https://user-images.githubusercontent.com/43162899/81441039-54e75480-9171-11ea-816f-c6af2805db82.jpeg)
+#### Home-Assistant view
+```yaml
+  - badges: []
+    cards:
+      - entities:
+          - entities:
+              - sensor.total_liters
+              - sensor.current_liters
+              - sensor.irrigation_last_run
+              - sensor.irrigation_last_contact
+            entity: sensor.pump_status
+            icon: 'mdi:water-pump'
+            name: Irrigatie
+            state_header: Status
+            type: 'custom:multiple-entity-row'
+        type: entities
+      - cards:
+          - entities:
+              - entity: sensor.flow_rate
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            icon: 'mdi:pinwheel-outline'
+            line_color: var(--accent-color)
+            line_width: 8
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+          - entities:
+              - entity: sensor.current_liters
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            icon: 'mdi:water-outline'
+            line_color: var(--accent-color)
+            line_width: 8
+            points_per_hour: 60
+            type: 'custom:mini-graph-card'
+        type: horizontal-stack
+      - entities:
+          - entity: sensor.total_liters
+            index: 0
+        font_size: 75
+        group_by: date
+        hours_to_show: 168
+        icon: 'mdi:pinwheel-outline'
+        show:
+          graph: bar
+        type: 'custom:mini-graph-card'
+      - type: entity
+        entity: sensor.saved_water_costs
+        icon: 'mdi:dollar'
+    icon: 'mdi:flower-tulip'
+    path: garden
+    title: Garden
 
-![enter image description here](https://user-images.githubusercontent.com/43162899/81441118-78aa9a80-9171-11ea-89ef-a1511bff1da7.jpeg)
+#### Hardware
+![The wemos and case](https://user-images.githubusercontent.com/43162899/81441039-54e75480-9171-11ea-816f-c6af2805db82.jpeg)
+
+![Flow sensor YF-G1](https://user-images.githubusercontent.com/43162899/81441118-78aa9a80-9171-11ea-89ef-a1511bff1da7.jpeg)
