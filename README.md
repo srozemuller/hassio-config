@@ -20,39 +20,28 @@ In the basics my environment has the following configuration
 
 -  [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module](https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07)
 
-  
+ 
 
 ##### Devices:
 
 - [Philips HUE Lightbulbs](https://www2.meethue.com/nl-nl/led-lampen)
-
 - [Tado Thermostat](https://www.tado.com/nl/producten/additionele-slimme-thermostaat)
-
 - [Tado Smart Radiator](https://www.tado.com/nl/producten/slimme-radiatorknop)
-
 - [IKEA Tradfri Lightbulbs](https://www.ikea.com/nl/nl/cat/draadloze-led-lichtbron-36813/)
-
 -  [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
-
 -  [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
-
 -  [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
-
+- [Wemos D1 Pro](https://nl.aliexpress.com/item/32651747570.html?spm=a2g0o.productlist.0.0.73622a6chd3nbl&algo_pvid=9c7a74d4-2a6f-416a-ad13-027f22fe8593&algo_expid=9c7a74d4-2a6f-416a-ad13-027f22fe8593-0&btsid=0b0a0ac215889712568181191e1a50&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
   
 
 ##### RPI with Raspbian Buster::
 
 -  [Docker](https://www.docker.com)
-
 -  [Hass.io](https://www.hass.io)
-
 -  [DSMR-Reader](https://github.com/xirixiz/dsmr-reader-docker)
-
 -  [Portainer](https://www.portainer.io/installation/)
-
 -  [Strongswan](https://strongswan.org/)
 
-  
 
 #### [Azure](https://portal.azure.com)
 
