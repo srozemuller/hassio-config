@@ -27,5 +27,8 @@
     sensors:
       saved_water_costs:
         friendly_name: "Saved Water Costs"
-        value_template: '{{ ((states.sensor.total_liters.state|int) * 0,00104)|round(1) }}'
-             
+        value_template: '{{ ((states.sensor.total_liters.state|int) * 0.00104)|round(1) }}'
+  - platform: mqtt
+    state_topic: "garden/irrigation/session_liters"
+    name: "Session Liters"
+    unit_of_measurement: 'liter'
