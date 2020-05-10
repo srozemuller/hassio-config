@@ -81,3 +81,18 @@ tuya:
 spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
+influxdb:
+  host: !secret influx_host
+  username: homeassistant
+  password: !secret influxdb_password
+  include:
+    entities:
+      - sensor.total_liters
+      - sensor.liters_total
+      - sensor.current_liters
+      - sensor.keuken_humidity
+      - sensor.verwarming_humidity
+      - sensor.keuken_temperature
+      - sensor.verwarming_temperature
+      - sensor.ipsec_ping_time
+      
