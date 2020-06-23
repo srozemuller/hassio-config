@@ -38,7 +38,7 @@ http:
 #homekit:
 
 #device_tracker:
-
+api:
 script: !include scripts.yaml
 group: !include groups.yaml
 zone: !include zones.yaml
@@ -89,6 +89,7 @@ influxdb:
     entities:
       - sensor.total_liters
       - sensor.liters_total
+      - sensor.session_liters
       - sensor.current_liters
       - sensor.keuken_humidity
       - sensor.verwarming_humidity
