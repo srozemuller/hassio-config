@@ -24,6 +24,7 @@ all-lights:
     - switch.808204522cf4320418c2 # kleine lamp achter  
     - light.zolder
     - light.slaapkamer_daan
+    - light.hue_lightstrip_plus_1
 livingroom:
   name: All Lights Livingroom
   icon: 'mdi:floor-lamp'
