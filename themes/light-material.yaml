@@ -7,23 +7,23 @@ light:
   text-medium-light-color: '#A0A2A8'                                              # Medium-light grey text
   text-medium-color: '#80828A'                                                    # Medium grey text
   text-dark-color: '#6A6B74'                                                      # Dark grey text
-  accent-color: '#1976d2'                                                         # Blue
-  accent-medium-color: '#1976d2'                                                  # Decent blue
+  accent-color: '#03A9F4'                                                         # 500 Light Blue
+  accent-medium-color: '#2196F3'                                                  # 500 Blue
   background-color: rgb(255,255,255)                                              # White  background
   #background-color-2: '#484E59'                                                  # Light grey background
   background-card-color: '#ffffff'                                                # White background
   border-color: '#EAEAEA'                                                         # Grey border
 
   #specific garbage icons
-  accent-color-orange: '#f57c00'                                                  # Plastic Garbage
-  accent-color-green: '#388e3c'                                                   # Bio Garbage
+  accent-color-orange: '#FF9800'                                                  # 500 Orange
+  accent-color-green: '#4CAF50'                                                   # Bio Green
   accent-color-grey: 'var(--text-color)'
-  accent-color-cyan: '#00bcd4'                                                    # 500 
-  accent-color-purple: '#9c27b0'                                                  # 500
-  accent-color-yellow: '#ffeb3b'                                                  # 500
+  accent-color-cyan: '#00BCD4'                                                    # 500 Cyan
+  accent-color-purple: '#3F51B5'                                                  # 500 Indigo
+  accent-color-yellow: '#FFEB3B'                                                  # 500 
   # Header
-  primary-color: '#1976d2'                                                        # Background color
-  text-primary-color: '#ffffff'                                         # Text
+  primary-color: 'var(--accent-color)'                                            # Background color
+  text-primary-color: '#ffffff'                                                   # Text  
   
   # Left Menu
   paper-listbox-background-color: 'var(--background-color)'                       # Background
