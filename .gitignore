@@ -34,3 +34,5 @@ home-assistant.log
 zones.yaml
 /arduino/settings.h
 custom_files/*/*.txt
+custom_files/snapshots/last_snapshotfiledate.txt
+custom_files/snapshots/last_snapshotfilename.txt

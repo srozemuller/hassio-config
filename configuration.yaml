@@ -59,12 +59,76 @@ input_number: !include inputnumbers.yaml
 
 
 # Integrations
-ios: #!include_dir_merge_list notifications
+ios: 
+  push:
+    categories:
+      - name: Alarm
+        identifier: 'alarm'
+        actions:
+          - identifier: 'SILENCE_ALARM'
+            title: 'Silence Alarm'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: yes
+            behavior: 'default'
+      - name: Siren
+        identifier: 'siren'
+        actions:
+          - identifier: 'ACTIVATE_SIRENS'
+            title: 'Activate Sirens'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: yes
+            behavior: 'default'    
+      - name: TurnOffLights
+        identifier: 'lights'
+        actions:
+          - identifier: 'TURNOFF_LIGHTS'
+            title: 'Zet lichten uit'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default' 
+          - identifier: 'TURNON_MANUALMODE'
+            title: 'Niet nodig voor nu'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default' 
+      - name: TurnOffVactionMode
+        identifier: 'vacationmode'
+        actions:
+          - identifier: 'TURNOFF_VACMODE'
+            title: 'Zet vakantiemodus uit'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default' 
+      - name: TurnOnVactionMode
+        identifier: 'vacationmodeon'
+        actions:
+          - identifier: 'TURNON_VACMODE'
+            title: 'Zet vakantiemodus aan'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default' 
+          - identifier: 'TURNON_MANUALMODE'
+            title: 'Niet nodig voor nu'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default' 
+      - name: TurnOffManualMode
+        identifier: 'manualModeOff'
+        actions:
+          - identifier: 'TURNOFF_MANUALMODE'
+            title: 'Zet manualmode uit'
+            activationMode: 'background'
+            authenticationRequired: no
+            destructive: no
+            behavior: 'default' 
 shopping_list:
-badnest:
-  issue_token: !secret nest_token
-  cookie: !secret nest_cookie
-  region: nl
 calendar:
   - platform: caldav
     username: !secret google_user
@@ -96,4 +160,5 @@ influxdb:
       - sensor.keuken_temperature
       - sensor.verwarming_temperature
       - sensor.ipsec_ping_time
+      - sensor.opensky
       

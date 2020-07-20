@@ -14,13 +14,13 @@ light:
   background-card-color: '#ffffff'                                                # White background
   border-color: '#EAEAEA'                                                         # Grey border
 
-  #specific garbage icons
+  #specific colors
   accent-color-orange: '#FF9800'                                                  # 500 Orange
   accent-color-green: '#4CAF50'                                                   # Bio Green
   accent-color-grey: 'var(--text-color)'
   accent-color-cyan: '#00BCD4'                                                    # 500 Cyan
   accent-color-purple: '#3F51B5'                                                  # 500 Indigo
-  accent-color-yellow: '#FFEB3B'                                                  # 500 
+  accent-color-yellow: '#FFEB3B'                                                  # 500 Yellow
   # Header
   primary-color: 'var(--accent-color)'                                            # Background color
   text-primary-color: '#ffffff'                                                   # Text  
