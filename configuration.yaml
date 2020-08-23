@@ -31,7 +31,6 @@ recorder:
 http:
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
-  base_url: !secret base_url
   
 #lovelace:
 #  mode: yaml
@@ -137,11 +136,6 @@ calendar:
 tado:
   username: !secret tado_user
   password: !secret tado_pass
-tuya:
-  username: !secret tuya_user
-  password: !secret tuya_pass
-  country_code: 31
-  platform: smart_life
 spotify:
   client_id: !secret spotify_id
   client_secret: !secret spotify_secret
