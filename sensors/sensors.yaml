@@ -24,18 +24,6 @@
         friendly_name: "Salt Level Last Update"
         value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
   
-#DarkSky
-  - platform: darksky
-    api_key: !secret dark_api
-    forecast:
-      - 0
-    hourly_forecast:
-      - 0
-      - 1
-    monitored_conditions:
-      - summary
-      - icon
-      - temperature
 #Nest
   - platform: badnest
 
