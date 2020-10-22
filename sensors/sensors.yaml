@@ -24,9 +24,6 @@
         friendly_name: "Salt Level Last Update"
         value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
   
-#Nest
-  - platform: badnest
-
 #OpenSky
   - platform: opensky
     radius: 500

@@ -162,14 +162,10 @@ calendar:
     username: !secret google_user
     password: !secret app_sander
     url: https://caldav.icloud.com
-tado:
-  username: !secret tado_user
-  password: !secret tado_pass
+
 tuya:
   username: !secret tuya_user
   password: !secret tuya_pass
   country_code: 31
   platform: smart_life
-spotify:
-  client_id: !secret spotify_id
-  client_secret: !secret spotify_secret
+
