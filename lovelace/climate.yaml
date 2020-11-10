@@ -1,77 +1,264 @@
-path: climate
-icon: 'mdi:fire'
-title: Verwarming
-cards:
-  - color_thresholds:
-      - color: var(--accent-color)
-        value: 17
-      - color: '#ff7043'
-        value: 19
-    entities:
-      - sensor.keuken_temperature
-    font_size: 75
-    line_width: 5
-    hours_to_show: 6
-    points_per_hour: 3
-    type: 'custom:mini-graph-card'
-  - color_thresholds:
-      - color: var(--accent-color)
-        value: 17
-      - color: '#ff7043'
-        value: 19
-    entities:
-      - sensor.verwarming_temperature
-    font_size: 75
-    line_color: '#ff7043'
-    line_width: 5
-    hours_to_show: 6
-    points_per_hour: 3
-    type: 'custom:mini-graph-card'
-    type: vertical-stack
-    - cards:
-  - color_thresholds:
-      - color: var(--accent-color)
-        value: 45
-      - color: '#66bb6a'
-        value: 50
-    entities:
-      - sensor.keuken_humidity
-    font_size: 75
-    line_width: 5
-    hours_to_show: 6
-    points_per_hour: 3
-    type: 'custom:mini-graph-card'
-  - color_thresholds:
-      - color: var(--accent-color)
-        value: 45
-      - color: '#66bb6a'
-        value: 50
-    entities:
-      - sensor.verwarming_humidity
-    font_size: 75
-    line_width: 5
-    hours_to_show: 6
-    points_per_hour: 3
-    type: 'custom:mini-graph-card'
-    type: vertical-stack
-    - entities:
-    	- entity: climate.verwarming
-    	- entity: climate.keuken
-  		- entity: sensor.verwarming_tado_mode
-  	show_icon: true
-  	show_name: true
-  	show_state: true
-  	title: Verwarming
-  	type: glance
-  	- cards:
-  	- entities:
-      - climate.verwarming
-    entity: climate.verwarming
-    step_size: 1
-    style: |
-      ha-card {
-        --st-mode-active-background: var(--accent-color)
-        --st-mode-background: var(--text-dark-color)
-      }
-    type: 'custom:simple-thermostat'
-type: vertical-stack
+ cards:
+      - cards:
+          - entity: sensor.keuken_link
+            name: Keuken
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:link-variant'
+                value: ONLINE
+              - color: var(--accent-color-red)
+                icon: 'mdi:link-variant-off'
+                value: OFFLINE
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+          - entity: sensor.woonkamer_link
+            name: Woonkamer
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:link-variant'
+                value: ONLINE
+              - color: var(--accent-color-red)
+                icon: 'mdi:link-variant-off'
+                value: OFFLINE
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+          - entity: sensor.kantoor_link
+            name: Kantoor
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:link-variant'
+                value: ONLINE
+              - color: var(--accent-color-red)
+                icon: 'mdi:link-variant-off'
+                value: OFFLINE
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+          - entity: sensor.slaapkamer_stan_link
+            name: Slaapkamer
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:link-variant'
+                value: ONLINE
+              - color: var(--accent-color-red)
+                icon: 'mdi:link-variant-off'
+                value: OFFLINE
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+        type: horizontal-stack
+        title: Thermostaat Link
+      - title: Thermostaat Power
+        cards:
+          - entity: sensor.keuken_power
+            name: Keuken
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:power-on'
+                value: 'ON'
+              - color: var(--accent-color-red)
+                icon: mdi-power-off
+                value: 'OFF'
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+          - entity: sensor.woonkamer_power
+            name: Woonkamer
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:power-on'
+                value: 'ON'
+              - color: var(--accent-color-red)
+                icon: mdi-power-off
+                value: 'OFF'
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+          - entity: sensor.kantoor_power
+            name: Kantoor
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:power-on'
+                value: 'ON'
+              - color: var(--accent-color-red)
+                icon: mdi-power-off
+                value: 'OFF'
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+          - entity: sensor.slaapkamer_stan_power
+            name: Slaapkamer
+            size: 40%
+            state:
+              - color: var(--accent-color-green)
+                icon: 'mdi:power-on'
+                value: 'ON'
+              - color: var(--accent-color-red)
+                icon: mdi-power-off
+                value: 'OFF'
+            styles:
+              card:
+                - padding: 16px 8px
+                - font-size: 10px
+            type: 'custom:button-card'
+        type: horizontal-stack
+      - type: entities
+        entities:
+          - entity: climate.keuken
+            icon: 'mdi:food-variant'
+          - entity: climate.woonkamer
+            icon: 'mdi:sofa'
+          - entity: climate.kantoor
+            icon: 'mdi:desktop-mac-dashboard'
+          - entity: climate.verwarming
+          - entity: climate.slaapkamer_stan
+            icon: 'mdi:bed'
+        title: Heating overview
+        state_color: true
+        show_header_toggle: true
+      - cards:
+          - entities:
+              - entity: sensor.woonkamer_temperature
+                index: 0
+            font_size: 75
+            hours_to_show: 6
+            color_thresholds:
+              - value: 17
+                color: var(--accent-color-green)
+              - value: 18.5
+                color: var(--accent-color-yellow)
+              - value: 20
+                color: var(--accent-color-red)
+            line_width: 8
+            points_per_hour: 3
+            type: 'custom:mini-graph-card'
+          - entities:
+              - entity: sensor.woonkamer_humidity
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            line_color: var(--accent-color)
+            line_width: 8
+            points_per_hour: 6
+            type: 'custom:mini-graph-card'
+        type: horizontal-stack
+      - cards:
+          - entities:
+              - entity: sensor.kantoor_temperature
+                index: 0
+            font_size: 75
+            hours_to_show: 6
+            color_thresholds:
+              - value: 17
+                color: var(--accent-color-green)
+              - value: 18.5
+                color: var(--accent-color-yellow)
+              - value: 20
+                color: var(--accent-color-red)
+            line_width: 8
+            points_per_hour: 3
+            type: 'custom:mini-graph-card'
+          - entities:
+              - entity: sensor.kantoor_humidity
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            line_color: var(--accent-color)
+            line_width: 8
+            points_per_hour: 6
+            type: 'custom:mini-graph-card'
+        type: horizontal-stack
+      - type: horizontal-stack
+        cards:
+          - type: thermostat
+            entity: climate.verwarming
+            name: Verwarming
+          - type: thermostat
+            entity: climate.keuken
+            name: Keuken
+      - type: horizontal-stack
+        cards:
+          - type: thermostat
+            entity: climate.woonkamer
+            name: Woonkamer
+          - type: thermostat
+            entity: climate.slaapkamer_stan
+            name: Stan
+      - cards:
+          - entities:
+              - entity: sensor.keuken_temperature
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            color_thresholds:
+              - value: 17
+                color: var(--accent-color-green)
+              - value: 18.5
+                color: var(--accent-color-yellow)
+              - value: 20
+                color: var(--accent-color-red)
+            line_width: 8
+            points_per_hour: 6
+            type: 'custom:mini-graph-card'
+          - entities:
+              - entity: sensor.keuken_humidity
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            line_color: var(--accent-color)
+            line_width: 8
+            points_per_hour: 6
+            type: 'custom:mini-graph-card'
+        type: horizontal-stack
+      - cards:
+          - entities:
+              - entity: sensor.slaapkamer_stan_temperature
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            color_thresholds:
+              - value: 17
+                color: var(--accent-color-green)
+              - value: 18.5
+                color: var(--accent-color-yellow)
+              - value: 20
+                color: var(--accent-color-red)
+            line_width: 8
+            points_per_hour: 6
+            type: 'custom:mini-graph-card'
+          - entities:
+              - entity: sensor.slaapkamer_stan_humidity
+                index: 0
+            font_size: 75
+            hours_to_show: 3
+            line_color: var(--accent-color)
+            line_width: 8
+            points_per_hour: 6
+            type: 'custom:mini-graph-card'
+        type: horizontal-stack
+    icon: 'mdi:fire'
+    path: climate
+    title: Verwarming
