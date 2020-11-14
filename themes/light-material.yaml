@@ -7,22 +7,25 @@ light:
   text-medium-light-color: '#A0A2A8'                                              # Medium-light grey text
   text-medium-color: '#80828A'                                                    # Medium grey text
   text-dark-color: '#6A6B74'                                                      # Dark grey text
-  accent-color: '#03A9F4'                                                         # 500 Light Blue
-  accent-medium-color: '#2196F3'                                                  # 500 Blue
+  accent-color: '#1976d2'                                                         # 700 Blue P
+  accent-medium-color: '#0288d1'                                                  # 700 Light Blue P
   background-color: rgb(255,255,255)                                              # White  background
   #background-color-2: '#484E59'                                                  # Light grey background
   background-card-color: '#ffffff'                                                # White background
   border-color: '#EAEAEA'                                                         # Grey border
 
   #specific colors
-  accent-color-orange: '#FF9800'                                                  # 500 Orange
-  accent-color-green: '#4CAF50'                                                   # Bio Green
+  accent-color-orange: '#f57c00'                                                  # 700 Orange P
+  accent-color-green: '#388e3c'                                                   # 700 Green P
   accent-color-grey: 'var(--text-color)'
-  accent-color-cyan: '#00BCD4'                                                    # 500 Cyan
-  accent-color-purple: '#3F51B5'                                                  # 500 Indigo
-  accent-color-yellow: '#FFEB3B'                                                  # 500 Yellow
+  accent-color-cyan: '#0097a7'                                                    # 700 Cyan P
+  accent-color-purple: '#303f9f'                                                  # 700 Indigo P
+  accent-color-yellow: '#fbc02d'                                                  # 700 Yellow P
+  accent-color-red: '#d32f2f'                                                     # 700 Red Light P
+  accent-color-blue: '#1976d2'                                                    # 700 Blue Light P
+
   # Header
-  primary-color: 'var(--accent-color)'                                            # Background color
+  primary-color: 'var(--accent-color-blue)'                                       # Background color
   text-primary-color: '#ffffff'                                                   # Text  
   
   # Left Menu

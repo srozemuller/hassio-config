@@ -20,7 +20,9 @@
 - platform: command_line
   name: Latest HA Snapshot date
   command: 'cat /config/custom_files/snapshots/last_snapshotfiledate.txt'
-
+- platform: command_line
+  name: Latest HA Snapshot ago
+  command: 'cat /config/custom_files/snapshots/last_snapshot.txt'
 - platform: command_line
   name: Latest HA Snapshot file
   command: 'cat /config/custom_files/snapshots/last_snapshotfilename.txt |  sed "s:.*/::"'
