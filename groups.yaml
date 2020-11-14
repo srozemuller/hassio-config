@@ -25,6 +25,7 @@ all-lights:
     - light.zolder
     - light.slaapkamer_daan
     - light.hue_lightstrip_plus_1
+    - light.keuken_eettafel_2
 livingroom:
   name: All Lights Livingroom
   icon: 'mdi:floor-lamp'
@@ -35,4 +36,3 @@ livingroom:
     - light.kleine_lamp
     - switch.808204522cf43204195d #lamp kachel
     - switch.808204522cf4320418c2 # kleine lamp achter  
-    
