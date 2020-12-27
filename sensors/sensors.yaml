@@ -5,25 +5,6 @@
     entity_ids:
       - sensor.0x14b457fffec68833_battery # Souterain
       - sensor.0x00158d00040e0c16_battery # Kleine raam beneden
-    
-#Water softener
-  - platform: mqtt
-    state_topic: "/watersoftner/sensor/salt"
-    name: "Salt level"
-    unit_of_measurement: 'cm'
-    value_template: '{{ (90 - (states.sensor.salt_level.state|int))|round(1) }}'
-  - platform: template
-    sensors:
-      salt_level_percent:
-        friendly_name: "Salt available"
-        unit_of_measurement: '%'
-        value_template: '{{ ((states.sensor.salt_level.state|int) / 90 *100)|round(1) }}'
-  - platform: template
-    sensors:
-      salt_level_last_update:
-        friendly_name: "Salt Level Last Update"
-        value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
-  
 #OpenSky
   - platform: opensky
     radius: 500
