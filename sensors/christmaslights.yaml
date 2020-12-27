@@ -1,0 +1,13 @@
+switch:
+  - platform: mqtt
+    unique_id: christmas_homes
+    name: "Christmas Homes"
+    state_topic: "christmas/lights/homes"
+    command_topic: "christmas/lights/homes/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true
