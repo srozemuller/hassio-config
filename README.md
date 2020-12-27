@@ -1,23 +1,17 @@
 
-# Home Automation with Docker and Postgres on RaspberryPI and AzureVM.
+# Home Automation (https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.home-assistant.io%2F&psig=AOvVaw1ED9Qrjk--2lIuw52SzgX2&ust=1609145605370000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNjX0tPk7e0CFQAAAAAdAAAAABAD) with Docker and Postgres on RaspberryPI and AzureVM.
 
 In the basics my environment has the following configuration
 
-  
 
-
-![hassioversion](https://img.shields.io/badge/hassio-0.109.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![hassioversion](https://img.shields.io/badge/hassio-2020.12.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
 #### Local
 
 -  [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
-
 -  [Philips HUE](https://www2.meethue.com/)
-
 -  [Tado Gateway](https://www.tado.com/)
-
 -  [Wireless Zigbee CC2531 Sniffer Bare Board](https://nl.aliexpress.com/item/32950799594.html?spm=a2g0s.9042311.0.0.44264c4dMfEXKg)
-
 -  [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module](https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07)
 
  
@@ -28,9 +22,9 @@ In the basics my environment has the following configuration
 - [Tado Thermostat](https://www.tado.com/nl/producten/additionele-slimme-thermostaat)
 - [Tado Smart Radiator](https://www.tado.com/nl/producten/slimme-radiatorknop)
 - [IKEA Tradfri Lightbulbs](https://www.ikea.com/nl/nl/cat/draadloze-led-lichtbron-36813/)
--  [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
--  [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
--  [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
+- [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
+- [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
+- [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
 - [Wemos D1 Pro](https://nl.aliexpress.com/item/32651747570.html?spm=a2g0o.productlist.0.0.73622a6chd3nbl&algo_pvid=9c7a74d4-2a6f-416a-ad13-027f22fe8593&algo_expid=9c7a74d4-2a6f-416a-ad13-027f22fe8593-0&btsid=0b0a0ac215889712568181191e1a50&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
   
 
@@ -48,15 +42,10 @@ In the basics my environment has the following configuration
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
 
 -  [Docker](https://www.docker.com)
-
 -  [Portainer](https://www.portainer.io/installation/)
-
 -  [Postgres](https://hub.docker.com/_/postgres)
-
 -  [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
-
 -  [HADockerMon](https://github.com/philhawthorne/ha-dockermon)
-
   
 
 ##### Setup Azure IPsec
