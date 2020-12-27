@@ -1,8 +1,7 @@
 
-# Home Automation (https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.home-assistant.io%2F&psig=AOvVaw1ED9Qrjk--2lIuw52SzgX2&ust=1609145605370000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNjX0tPk7e0CFQAAAAAdAAAAABAD) with Docker and Postgres on RaspberryPI and AzureVM.
+# Home Automation with Docker and Postgres on RaspberryPI and AzureVM.
 
 In the basics my environment has the following configuration
-
 
 ![hassioversion](https://img.shields.io/badge/hassio-2020.12.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
@@ -36,7 +35,6 @@ In the basics my environment has the following configuration
 -  [Portainer](https://www.portainer.io/installation/)
 -  [Strongswan](https://strongswan.org/)
 
-
 #### [Azure](https://portal.azure.com)
 
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
@@ -51,8 +49,6 @@ VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
 ##### Setup Azure IPsec
 
 [https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal](https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
-
-  
 
 For setting up the VPN on the Raspberry I used the following steps:
 
@@ -179,35 +175,27 @@ $ sudo ipsec status
 Cards
 
 - https://github.com/custom-cards/button-card
-
 - https://github.com/kalkih/mini-graph-card
-
 - https://github.com/thomasloven/lovelace-card-mod
-
 - https://github.com/nervetattoo/simple-thermostat
 - [https://github.com/benct/lovelace-multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row)
-  
+- https://github.com/maykar/lovelace-swipe-navigation
 
 Components
 
-- https://github.com/USA-RedDragon/badnest
-
 -  [https://github.com/hassio-addons/addon-node-red](https://github.com/hassio-addons/addon-node-red)
-
 -  [https://github.com/Koenkk/zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt)
-
 -  [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
-
-- [[https://github.com/philhawthorne/ha-dockermon](https://github.com/philhawthorne/ha-dockermon)]
+-  [https://github.com/philhawthorne/ha-dockermon](https://github.com/philhawthorne/ha-dockermon)
   
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
-  
  
 ### Screenshots
 ![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
 ![LightTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77206249-ca7e5f00-6af6-11ea-8d3d-00583a827891.png)
+![LightTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167626-03d5bf00-482d-11eb-8669-c55212a4e0b8.png)
 ![DarkTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20794.png)
 ![DarkTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77205228-b5a0cc00-6af4-11ea-8d59-d649b266c7c2.png)
-![DarkTheme-EnergyInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20797.png)
+![DarkTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167617-f02a5880-482c-11eb-80f5-a3937b24dc62.png)
