@@ -26,6 +26,7 @@ all-lights:
     - light.slaapkamer_daan
     - light.hue_lightstrip_plus_1
     - light.keuken_eettafel_2
+    - light.keukenblok
 livingroom:
   name: All Lights Livingroom
   icon: 'mdi:floor-lamp'
