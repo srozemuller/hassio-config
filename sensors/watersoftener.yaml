@@ -3,7 +3,8 @@
     state_topic: "watersoftner/sensor/salt"
     name: "Salt level"
     unit_of_measurement: 'cm'
-    
+    #salt reservoir is 90 height. that explains the 90 in the calculation
+    value_template: '{{ (90 - (states.sensor.salt_level.state|int))|round(1) }}'
   - platform: template
     sensors:
       salt_level_percent:
