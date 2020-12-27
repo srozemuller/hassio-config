@@ -46,6 +46,8 @@ frontend:
 
 # Sensors
 sensor: !include_dir_merge_list sensors
+# Switches
+switch: !include_dir_merge_list switches
 binary_sensor:
   - platform: workday
     country: NL  
@@ -153,16 +155,33 @@ influxdb:
       - sensor.verwarming_humidity
       - sensor.keuken_temperature
       - sensor.verwarming_temperature
+      - sensor.woonkamer_temperature
+      - sensor.woonkamer_humidity
       - sensor.ipsec_ping_time
-      - sensor.opensky
-      
-shopping_list:
-calendar:
-  - platform: caldav
-    username: !secret google_user
-    password: !secret app_sander
-    url: https://caldav.icloud.com
-
+      - sensor.salt_level
+      - sensor.memory_free
+      - sensor.memory_use_percent
+      - sensor.slaapkamer_stan_temperature
+      - sensor.slaapkamer_stan_humidity
+      - sensor.processor_use
+      - sensor.cpu_temperature
+      - sensor.disk_free
+      - sensor.disk_use_percent
+      - sensor.last_boot
+      - sensor.ipsec
+      - sensor.ipv4_address_eth0
+      - sensor.current_version
+      - sensor.last_boot
+      - sensor.keuken_link
+      - sensor.woonkamer_link
+      - sensor.kantoor_link
+      - sensor.slaapkamer_stan_link
+      - sensor.keuken_power
+      - sensor.woonkamer_power
+      - sensor.kantoor_power
+      - sensor.slaapkamer_stan_power
+      - sensor.diskstation_network_up
+      - sensor.diskstation_network_down
 tuya:
   username: !secret tuya_user
   password: !secret tuya_pass
