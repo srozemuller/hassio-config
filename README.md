@@ -196,6 +196,7 @@ Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 ![LightTheme](https://user-images.githubusercontent.com/43162899/103168384-19e67e00-4833-11eb-866d-fbd8764470e8.png)
 ![LightTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77206249-ca7e5f00-6af6-11ea-8d3d-00583a827891.png)
 ![LightTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167626-03d5bf00-482d-11eb-8669-c55212a4e0b8.png)
-![DarkTheme](https://user-images.githubusercontent.com/43162899/103168392-2c60b780-4833-11eb-8df1-3d2bc79e539b.png)
+![DarkTheme](https://user-images.githubusercontent.com/43162899/103168434-85305000-4833-11eb-817e-6ff226a96c07.png)
 ![DarkTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77205228-b5a0cc00-6af4-11ea-8d59-d649b266c7c2.png)
 ![DarkTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167617-f02a5880-482c-11eb-80f5-a3937b24dc62.png)
+
