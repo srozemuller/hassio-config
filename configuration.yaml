@@ -46,8 +46,8 @@ frontend:
   themes: !include_dir_merge_named themes
 
 # Automation
-automation: !include automations.yaml
-
+automation manual: !include_dir_list automations
+automation ui: !include automations.yaml
 # Sensors
 sensor: !include_dir_merge_list sensors
 # Switches
