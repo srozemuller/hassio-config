@@ -2,6 +2,9 @@
 
 - platform: cpuspeed
 
+- platform: cert_expiry
+  host: schoolstraat.duckdns.org
+
 - platform: command_line
   name: CPU Temperature
   command: 'cat /sys/class/thermal/thermal_zone0/temp'
