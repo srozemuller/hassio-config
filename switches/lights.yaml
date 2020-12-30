@@ -1,0 +1,25 @@
+  - platform: mqtt
+    unique_id: christmas_homes
+    name: "Christmas Homes"
+    state_topic: "christmas/lights/homes"
+    command_topic: "christmas/lights/homes"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true
+  - platform: mqtt
+    unique_id: christmas_trial
+    name: "Christmas Trial"
+    state_topic: "christmas/lights/trail"
+    command_topic: "christmas/lights/trail"
+    payload_on: "ON"
+    payload_off: "OFF"
+    state_on: "ON"
+    state_off: "OFF"
+    optimistic: false
+    qos: 0
+    retain: true
+    
