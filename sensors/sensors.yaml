@@ -6,8 +6,8 @@
       - sensor.0x14b457fffec68833_battery # Souterain
       - sensor.0x00158d00040e0c16_battery # Kleine raam beneden
 #OpenSky
-  - platform: opensky
-    radius: 500
+#  - platform: opensky
+#    radius: 500
 
 #Presense
 #  - platform: google_travel_time
