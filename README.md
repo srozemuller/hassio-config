@@ -199,7 +199,3 @@ Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 ![DarkTheme](https://user-images.githubusercontent.com/43162899/103168434-85305000-4833-11eb-817e-6ff226a96c07.png)
 ![DarkTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77205228-b5a0cc00-6af4-11ea-8d59-d649b266c7c2.png)
 ![DarkTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167617-f02a5880-482c-11eb-80f5-a3937b24dc62.png)
-<<<<<<< HEAD
-
-=======
->>>>>>> 064cb1ba378ab07d935a80d4481c7db7c0a2d608
