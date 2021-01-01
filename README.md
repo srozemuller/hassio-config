@@ -3,21 +3,14 @@
 
 In the basics my environment has the following configuration
 
-  
-
-
-![hassioversion](https://img.shields.io/badge/hassio-0.109.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![hassioversion](https://img.shields.io/badge/hassio-2020.12.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
 #### Local
 
 -  [Raspberry PI 3b+ with 16GB SD](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
-
 -  [Philips HUE](https://www2.meethue.com/)
-
 -  [Tado Gateway](https://www.tado.com/)
-
 -  [Wireless Zigbee CC2531 Sniffer Bare Board](https://nl.aliexpress.com/item/32950799594.html?spm=a2g0s.9042311.0.0.44264c4dMfEXKg)
-
 -  [FTDI FT232RL USB To TTL Serial IC Adapter Converter Module](https://nl.aliexpress.com/item/32648158894.html?spm=a2g0s.9042311.0.0.27424c4dh5Tr07)
 
  
@@ -28,9 +21,9 @@ In the basics my environment has the following configuration
 - [Tado Thermostat](https://www.tado.com/nl/producten/additionele-slimme-thermostaat)
 - [Tado Smart Radiator](https://www.tado.com/nl/producten/slimme-radiatorknop)
 - [IKEA Tradfri Lightbulbs](https://www.ikea.com/nl/nl/cat/draadloze-led-lichtbron-36813/)
--  [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
--  [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
--  [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
+- [IKEA Trafri Motion Sensor](https://www.ikea.com/nl/nl/p/tradfri-draadloze-bewegingssensor-wit-70429913/)
+- [XIAOMI Door/ Window Sensor](https://nl.aliexpress.com/item/32991903307.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg)
+- [NEO Coolcam Smart Plug 16A](https://www.aliexpress.com/snapshot/0.html?spm=a2g0s.9042311.0.0.6afb4c4dopldDg&orderId=8004619814437739&productId=32966183521)
 - [Wemos D1 Pro](https://nl.aliexpress.com/item/32651747570.html?spm=a2g0o.productlist.0.0.73622a6chd3nbl&algo_pvid=9c7a74d4-2a6f-416a-ad13-027f22fe8593&algo_expid=9c7a74d4-2a6f-416a-ad13-027f22fe8593-0&btsid=0b0a0ac215889712568181191e1a50&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_)
   
 
@@ -42,28 +35,20 @@ In the basics my environment has the following configuration
 -  [Portainer](https://www.portainer.io/installation/)
 -  [Strongswan](https://strongswan.org/)
 
-
 #### [Azure](https://portal.azure.com)
 
 VM: Ubuntu 18.04 size B2s, standard, 2vCPU, 4GB mem
 
 -  [Docker](https://www.docker.com)
-
 -  [Portainer](https://www.portainer.io/installation/)
-
 -  [Postgres](https://hub.docker.com/_/postgres)
-
 -  [PostgresAdmin](https://hub.docker.com/r/dpage/pgadmin4/)
-
 -  [HADockerMon](https://github.com/philhawthorne/ha-dockermon)
-
   
 
 ##### Setup Azure IPsec
 
 [https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal](https://docs.microsoft.com/en-en/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal)
-
-  
 
 For setting up the VPN on the Raspberry I used the following steps:
 
@@ -190,35 +175,27 @@ $ sudo ipsec status
 Cards
 
 - https://github.com/custom-cards/button-card
-
 - https://github.com/kalkih/mini-graph-card
-
 - https://github.com/thomasloven/lovelace-card-mod
-
 - https://github.com/nervetattoo/simple-thermostat
 - [https://github.com/benct/lovelace-multiple-entity-row](https://github.com/benct/lovelace-multiple-entity-row)
-  
+- https://github.com/maykar/lovelace-swipe-navigation
 
 Components
 
-- https://github.com/USA-RedDragon/badnest
-
 -  [https://github.com/hassio-addons/addon-node-red](https://github.com/hassio-addons/addon-node-red)
-
 -  [https://github.com/Koenkk/zigbee2mqtt](https://github.com/Koenkk/zigbee2mqtt)
-
 -  [https://www.home-assistant.io/docs/mqtt/broker/](https://www.home-assistant.io/docs/mqtt/broker/)
-
-- [[https://github.com/philhawthorne/ha-dockermon](https://github.com/philhawthorne/ha-dockermon)]
+-  [https://github.com/philhawthorne/ha-dockermon](https://github.com/philhawthorne/ha-dockermon)
   
 
 Icons: [http://materialdesignicons.com/](http://materialdesignicons.com/)
 
-  
  
 ### Screenshots
-![LightTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20798.png)
+![LightTheme](https://user-images.githubusercontent.com/43162899/103168384-19e67e00-4833-11eb-866d-fbd8764470e8.png)
 ![LightTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77206249-ca7e5f00-6af6-11ea-8d3d-00583a827891.png)
-![DarkTheme](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20794.png)
+![LightTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167626-03d5bf00-482d-11eb-8669-c55212a4e0b8.png)
+![DarkTheme](https://user-images.githubusercontent.com/43162899/103168434-85305000-4833-11eb-817e-6ff226a96c07.png)
 ![DarkTheme-SystemInfo](https://user-images.githubusercontent.com/43162899/77205228-b5a0cc00-6af4-11ea-8d59-d649b266c7c2.png)
-![DarkTheme-EnergyInfo](https://github.com/srozemuller/hassio-config/blob/master/screenshots/Image%20797.png)
+![DarkTheme-HeatingInfo](https://user-images.githubusercontent.com/43162899/103167617-f02a5880-482c-11eb-80f5-a3937b24dc62.png)
