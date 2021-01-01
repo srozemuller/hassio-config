@@ -1,0 +1,25 @@
+alias: turn lights before sunset
+description: '30 minutes before sunset'
+trigger:
+  - platform: sun
+    event: sunset
+    offset: '-00:30'
+condition: []
+action:
+  - domain: light
+    entity_id: light.keukenblok
+    device_id: 4e7f0f99265e11ebb9986ffbfbb6f483
+    type: turn_on
+  - domain: light
+    entity_id: light.buitenlamp_voordeur
+    device_id: 7c9943618c974ce19368e3d76d8032af
+    type: turn_on
+  - domain: light
+    entity_id: light.woonkamer_voor
+    device_id: 966099337004444c82e4603731e4f63f
+    type: turn_on
+  - domain: light
+    entity_id: light.woonkamer_achter
+    device_id: 1bb7aaeed81d40329813fbd000a01129
+    type: turn_on
+mode: single
