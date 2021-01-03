@@ -15,7 +15,7 @@
 !themes
 !*nodered
 !*custom_files/irrigation
-!*automations/system
+!*automations/system/
 
 # Ignore folders.
 .storage
