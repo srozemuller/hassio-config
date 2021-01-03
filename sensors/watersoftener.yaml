@@ -1,0 +1,20 @@
+#Water softener
+  - platform: mqtt
+    state_topic: "watersoftner/sensor/salt"
+    name: "Salt level"
+    unit_of_measurement: 'cm'
+    #salt reservoir is 90 height. that explains the 90 in the calculation
+  - platform: template
+    sensors:
+      salt_level_percent:
+        friendly_name: "Salt available"
+        unit_of_measurement: '%'
+        #sensor returns a value in cm which is the distance from sensor to salt level
+        #salt reservoir is 90 height. that explains the 90 in the calculation
+        value_template: '{{ ((states.sensor.salt_level.state|int) / 90 *100)|round(1) }}'
+  - platform: template
+    sensors:
+      salt_level_last_update:
+        friendly_name: "Salt Level Last Update"
+        value_template: '{{as_timestamp(states.sensor.salt_level.last_updated) | timestamp_custom("%A, %d %h %H:%M", True)}}'
+  
