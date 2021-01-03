@@ -1,0 +1,10 @@
+alias: 'Create Snapshot at 23:00'
+description: 'Creating snapshots every day at 23:00'
+mode: single
+trigger:
+  - platform: time
+    at: '23:00'
+condition: []
+action:
+  - service: hassio.snapshot_full
+    data: {} 
