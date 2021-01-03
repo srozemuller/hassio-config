@@ -1,4 +1,4 @@
-alias: Turn Off All Lights
+alias: Turn Off All Lights At 23:00
 description: 'If vacationmode is on turn off at 23:00'
 mode: single
 trigger:
