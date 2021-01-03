@@ -1,6 +1,6 @@
   - platform: rova
-    zip_code: 7686CM
-    house_number: 69
+    zip_code: !secret postcode
+    house_number: !secret huisnummer
     #house_number_suffix: HOUSE_NUMBER_SUFFIX
     name: Rova
     monitored_conditions:

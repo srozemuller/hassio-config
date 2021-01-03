@@ -2,6 +2,9 @@
 
 - platform: cpuspeed
 
+- platform: cert_expiry
+  host: schoolstraat.duckdns.org
+
 - platform: command_line
   name: CPU Temperature
   command: 'cat /sys/class/thermal/thermal_zone0/temp'
@@ -20,7 +23,9 @@
 - platform: command_line
   name: Latest HA Snapshot date
   command: 'cat /config/custom_files/snapshots/last_snapshotfiledate.txt'
-
+- platform: command_line
+  name: Latest HA Snapshot ago
+  command: 'cat /config/custom_files/snapshots/last_snapshot.txt'
 - platform: command_line
   name: Latest HA Snapshot file
   command: 'cat /config/custom_files/snapshots/last_snapshotfilename.txt |  sed "s:.*/::"'
@@ -60,36 +65,4 @@
   resource: http://172.16.10.4:8126/container/portainer
   name: 'Azure Portainer Uptime'
   value_template: '{{ value_json.status}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/homeassistant
-  name: 'HomeAssistant Uptime'
-  value_template: '{{ value_json.status}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/homeassistant
-  name: 'HomeAssistant State'
-  value_template: '{{ value_json.state}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/portainer
-  name: 'Portainer Uptime'
-  value_template: '{{ value_json.status}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/portainer
-  name: 'Portainer State'
-  value_template: '{{ value_json.state}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/dsmr
-  name: 'DSMR Uptime'
-  value_template: '{{ value_json.status}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/dsmr
-  name: 'DSMR State'
-  value_template: '{{ value_json.state}}' 
-- platform: rest
-  resource: http://172.16.1.241:8126/container/addon_core_mosquitto
-  name: 'Mosquitto Uptime'
-  value_template: '{{ value_json.status}}'
-- platform: rest
-  resource: http://172.16.1.241:8126/container/addon_core_mosquitto
-  name: 'Mosquitto State'
-  value_template: '{{ value_json.state}}'   
 

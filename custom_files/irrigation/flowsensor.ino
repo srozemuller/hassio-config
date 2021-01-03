@@ -7,9 +7,11 @@
 #include <PubSubClient.h>
 #include "settings.h"
 
+
+
 volatile int flow_frequency; // Measures flow sensor pulses
 // Calculated litres/hour
-float vol = 0.0, l_minute, currentVolume;
+float vol = 0.0, l_minute, currentVolume, sessionVolume;
 unsigned char flowsensor = 4; // Sensor Input
 unsigned long currentTime;
 unsigned long cloopTime;
@@ -104,7 +106,8 @@ void loop ()
       Serial.print(" L/M");
       l_minute = l_minute / 60;
       vol = vol + l_minute;
-      currentVolume = currentVolume + l_minute ;
+      currentVolume = currentVolume + l_minute;
+      sessionVolume = sessionVolume + l_minute;
       Serial.print("Vol:");
       Serial.print(vol);
       Serial.print(" L");
@@ -151,8 +154,14 @@ void loop ()
         client.publish(mqtt_pub_topic_flowrate, String(l_minute).c_str(), true);
         client.publish(mqtt_pub_topic_current_liters, String(currentVolume).c_str(), true);
         client.publish(mqtt_pub_topic_pump_status, String(pumpRunning).c_str(), true);
-        pumpRunning = false; // when flow is stopped.. first send last value then reset.
-        currentVolume = 0; // when flow is stopped.. first send last value then reset.
+        // when flow is stopped send total session liters once to mqtt. 
+        // For counting total you need only one value from that specific session
+        //if (pumpRunning){
+          client.publish(mqtt_pub_topic_session_liters, String(sessionVolume).c_str(), true);
+          pumpRunning = false; // when flow is stopped.. first send last value then reset.
+          currentVolume = 0; // when flow is stopped.. first send last value then reset.
+          sessionVolume = 0; // when flow is stopped.. first send last value then reset.
+       // }
       }
     }
   }
