@@ -1,0 +1,9 @@
+alias: Light motion toilet
+description: ''
+use_blueprint:
+  path: homeassistant/motion_light.yaml
+  input:
+    no_motion_wait: '240'
+    motion_entity: binary_sensor.0xbc33acfffe65d8a6_occupancy
+    light_target:
+      entity_id: light.toilet
