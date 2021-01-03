@@ -1,0 +1,14 @@
+alias: Turn Off All Lights
+description: 'If vacationmode is on turn off at 23:00'
+mode: single
+trigger:
+  - platform: time
+    at: '23:00'
+condition:
+  - condition: state
+    entity_id: input_boolean.turn_on_vacationmode
+    state: 'On'
+action:
+  - service: light.turn_off
+    data: {}
+    entity_id: 'group.all_lights, light.keuken'
