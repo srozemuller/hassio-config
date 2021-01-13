@@ -3,11 +3,11 @@ description: 'Turn lights into red when doors are open'
 trigger:
   - platform: state
     entity_id: group.all_doorsensors
-    state: "On"
+    to: "on"
 condition:
   - condition: state
     entity_id: light.strip_office
-    state: 'On'
+    state: 'on'
 action:
   - service: scene.turn_on
     entity_id: scene.warning
