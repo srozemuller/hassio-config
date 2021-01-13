@@ -3,7 +3,7 @@
 - platform: cpuspeed
 
 - platform: cert_expiry
-  host: schoolstraat.duckdns.org
+  host: !secret base_url
 
 - platform: command_line
   name: CPU Temperature
@@ -19,16 +19,6 @@
   name: "IPSec ping time"
   unit_of_measurement: 'ms'
   command: 'ping -W 1 -c 1 172.16.10.4 |  grep -oP "(?<=time=)(.*?)(?= ms)"'
-#Latest snapshot 
-- platform: command_line
-  name: Latest HA Snapshot date
-  command: 'cat /config/custom_files/snapshots/last_snapshotfiledate.txt'
-- platform: command_line
-  name: Latest HA Snapshot ago
-  command: 'cat /config/custom_files/snapshots/last_snapshot.txt'
-- platform: command_line
-  name: Latest HA Snapshot file
-  command: 'cat /config/custom_files/snapshots/last_snapshotfilename.txt |  sed "s:.*/::"'
 
 - platform: systemmonitor
   resources:

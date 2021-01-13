@@ -1,4 +1,4 @@
-alias: turn lights on when sunset
+alias: Lights turn on after sunset
 description: '15 minutes after sunset turn on all other'
 trigger:
   - platform: sun
@@ -10,4 +10,8 @@ action:
     entity_id: light.keukenblok
     device_id: 4e7f0f99265e11ebb9986ffbfbb6f483
     type: turn_on
+  - service: switch.turn_on
+    entity_id: switch.808204522cf43204195d
+  - service: switch.turn_on
+    entity_id: switch.808204522cf4320418c2
 mode: single

@@ -1,0 +1,6 @@
+kitchen:
+  name: Alle lichten in keuken
+  icon: 'mdi:silverware'
+  entities:
+    - light.keuken_eettafel_2
+    - light.keuken_strip

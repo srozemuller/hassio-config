@@ -13,84 +13,15 @@ cancel_timer:
   sequence:
   - service: timer.cancel
     entity_id: timer.irrigation
-hue_turnon:
-  alias: Hue Turnon
+clean_old_snapshots:
+  alias: Clean old snapshots
   sequence:
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.808204522cf43204195d
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.lamp_tv
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.808204522cf4320418c2
-kleinelampen_turnon:
-  alias: Kleine lampen Turnon
-  sequence:
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.808204522cf43204195d
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.lamp_tv
-  - service: homeassistant.turn_on
-    data:
-      entity_id: switch.808204522cf4320418c2
-hue_turnoff:
-  alias: Hue Turnoff
-  sequence:
-  - service: homeassistant.turn_off
-    data:
-      entity_id: group.lights_all
-restart_ha:
-  alias: Restart HA
-  sequence:
-  - alias: Restart HA
-    service: homeassistant.restart
-office_strip_to_sunset:
-  alias: Office to Azure mode
-  sequence:
-  - service: light.turn_on
-    data:
-      brightness: 130
-      rgb_color:
-      - 36
-      - 130
-      - 255
-    entity_id: light.strip_office
-  mode: single
-  icon: mdi:microsoft
-'1605628056517':
-  alias: Office to sunset mode
-  sequence:
-  - service: light.turn_on
-    data:
-      brightness: 130
-      rgb_color:
-      - 255
-      - 207
-      - 121
-    entity_id: light.strip_office
-  mode: single
-  icon: mdi:weather-sunset
-'1605628107806':
-  alias: Office to pink mode
-  sequence:
-  - service: light.turn_on
-    data:
-      brightness: 130
-      rgb_color:
-      - 183
-      - 162
-      - 255
-    entity_id: light.strip_office
-  mode: single
-  icon: mdi:rocket-launch-outline
-reload_automation:
-  alias: Reload Automation
-  sequence:
-  - service: automation.reload
+  - service: shell_command.remove_old_snapshots
     data: {}
   mode: single
-  icon: mdi:restart
+git_pull:
+  alias: Git Pull
+  sequence:
+  - service: shell_command.git_pull
+    data: {}
+  mode: single

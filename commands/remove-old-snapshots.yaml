@@ -1,0 +1,2 @@
+shell_command:
+  remove_old_snapshots: 'python /usr/share/hassio/homeassistant/custom_files/system/get-latestsnapshot.py >/dev/null 2>&1'

@@ -1,0 +1,10 @@
+alias: 'Sensors garbage is picked'
+description: 'Sends a message when next is garbage is comming'
+mode: single
+trigger:
+  - platform: time
+    at: '18:00'
+condition: []
+action:
+  - service: hassio.snapshot_full
+    data: {} 

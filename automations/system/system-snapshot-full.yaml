@@ -1,4 +1,4 @@
-alias: 'Create Snapshot at 23:00'
+alias: 'System create snapshot'
 description: 'Creating snapshots every day at 23:00'
 mode: single
 trigger:

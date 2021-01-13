@@ -1,1 +1,9 @@
-[]
+- id: '1609688791378'
+  alias: Low battery for dashboard
+  description: ''
+  use_blueprint:
+    path: srozemuller/notification-low-battery.yaml
+    input:
+      notify_device: ccd4af9ef1bd4dbe95bb3d01ff01a83b
+      day: '0'
+      threshold: '20'

@@ -1,0 +1,13 @@
+alias: Lights motion turn off souterrain light after last movement
+description: 'Turn off lights in souterrain'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.0x14b457fffec68833_occupancy
+    to: "off"
+    for:
+      minutes: 5
+action:
+  - service: light.turn_off
+    entity_id: light.0x14b457fffe45e996
+  - service: light.turn_off
+    entity_id: light.spotje_washok

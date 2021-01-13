@@ -1,0 +1,11 @@
+alias: Lights motion souterrain
+description: ''
+use_blueprint:
+  path: homeassistant/motion_light.yaml
+  input:
+    no_motion_wait: '240'
+    motion_entity: binary_sensor.0x14b457fffec68833_occupancy
+    light_target:
+      entity_id:
+        - light.0x14b457fffe45e996
+        - light.spotje_washok

@@ -1,0 +1,13 @@
+alias: System if Tado is away turn on vacationmode
+description: ''
+mode: single
+trigger:
+  - platform: state
+    entity_id: sensor.verwarming_tado_mode
+    from: HOME
+    to: AWAY
+condition: []
+action:
+  - service: input_boolean.turn_on
+    data: {}
+    entity_id: input_boolean.turn_on_vacationmode

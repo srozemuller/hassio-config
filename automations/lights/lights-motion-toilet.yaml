@@ -1,4 +1,4 @@
-alias: Light motion toilet
+alias: Lights motion toilet
 description: ''
 use_blueprint:
   path: homeassistant/motion_light.yaml

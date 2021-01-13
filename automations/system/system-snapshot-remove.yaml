@@ -1,0 +1,13 @@
+alias: System remove old snapshots
+description: 'If automation create snapshot is on, then old will be deleted'
+mode: single
+trigger:
+  - platform: time
+    at: '23:30'
+condition:
+  - condition: state
+    entity_id: automation.system_create_snapshot
+    state: 'on'
+action:
+  - service: shell_command.remove_old_snapshots
+    data: {}

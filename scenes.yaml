@@ -1,0 +1,31 @@
+- id: scene_azure
+  name: Azure
+  entities:
+    light.strip_office:
+      state: on
+      rgb_color: [36, 130, 255]
+      brightness: 255
+      transition: 10
+- id: scene_sunrise
+  name: Sunrise
+  entities:
+    light.strip_office:
+      state: on
+      rgb_color: [255, 207, 121] 
+      brightness: 255
+      transition: 10
+- id: scene_space
+  name: Space
+  entities:
+    light.strip_office:
+      state: on
+      rgb_color: [183, 162, 255]
+      brightness: 255
+      transition: 10
+- id: scene_warning
+  name: Warning
+  entities:
+    light.strip_office:
+      state: on
+      rgb_color: [228, 44, 44]
+      brightness: 255

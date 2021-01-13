@@ -36,11 +36,13 @@ http:
 #lovelace:
 #  mode: yaml
 #homekit:
-
+shell_command:
+  remove_old_snapshots: 'find /backup -name "*.tar" -type f -mtime +1 -exec rm -f {} \;'
+  git_pull: 'git -C /config pull;'
 #device_tracker:
 api:
 script: !include scripts.yaml
-group: !include groups.yaml
+group: !include_dir_merge_named groups
 zone: !include zones.yaml
 frontend: 
   themes: !include_dir_merge_named themes
@@ -54,7 +56,15 @@ sensor: !include_dir_merge_list sensors
 switch: !include_dir_merge_list switches
 binary_sensor:
   - platform: workday
-    country: NL  
+    name: weekend days
+    country: NL
+    excludes: [mon, tue, wed, thu]
+    workdays: [fri, sat, sun]
+  - platform: workday
+    name: work days
+    country: NL
+    workdays: [mon, tue, wed, thu, fri]
+    excludes: [sat, sun]
 # Climate entities
 climate: !include_dir_merge_list climate
 
@@ -62,6 +72,8 @@ climate: !include_dir_merge_list climate
 input_boolean: !include inputbooleans.yaml
 input_number: !include inputnumbers.yaml
 
+# Configuration.yaml example
+scene: !include scenes.yaml
 
 # Integrations
 ios: 

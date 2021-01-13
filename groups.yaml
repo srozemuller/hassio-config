@@ -9,31 +9,5 @@
    
     
 ################# HOME #################    
-all-lights:
-  name: Alle lichten in huis
-  icon: 'mdi:floor-lamp'
-  entities:
-    - light.woonkamer_voor
-    - light.woonkamer_achter
-    - light.buiten
-    - light.souterain
-    - light.kleine_lamp
-    - light.spotjewashok
-    - light.toilet_beneden
-    - switch.808204522cf43204195d #lamp kachel
-    - switch.808204522cf4320418c2 # kleine lamp achter  
-    - light.zolder
-    - light.slaapkamer_daan
-    - light.hue_lightstrip_plus_1
-    - light.keuken_eettafel_2
-    - light.keukenblok
-livingroom:
-  name: All Lights Livingroom
-  icon: 'mdi:floor-lamp'
-  entities:  
-    - light.woonkamer_voor
-    - light.woonkamer_achter
-    - light.buiten
-    - light.kleine_lamp
-    - switch.808204522cf43204195d #lamp kachel
-    - switch.808204522cf4320418c2 # kleine lamp achter  
+
+
