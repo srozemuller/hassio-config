@@ -1,0 +1,7 @@
+all-doorsensors:
+  name: Sensors all door sensors
+  icon: 'mdi:lock'
+  entities:
+    - binary_sensor.0x00158d00052d5737_contact
+    - binary_sensor.0x00158d00040e0c16_contact
+    - binary_sensor.0x00158d00052d50b1_contact

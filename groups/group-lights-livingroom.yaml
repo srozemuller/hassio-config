@@ -1,0 +1,10 @@
+livingroom:
+  name: All Lights Livingroom
+  icon: 'mdi:floor-lamp'
+  entities:  
+    - light.woonkamer_voor
+    - light.woonkamer_achter
+    - light.buiten
+    - light.kleine_lamp
+    - switch.808204522cf43204195d #lamp kachel
+    - switch.808204522cf4320418c2 # kleine lamp achter  

@@ -1,0 +1,8 @@
+all-lights-before-sunset:
+  name: Lights all before sunset
+  icon: 'mdi:weather-sunset'
+  entities:
+    - light.woonkamer_voor
+    - light.woonkamer_achter
+    - light.buiten
+    - light.keukenblok
