@@ -5,4 +5,4 @@ lights-sunset-before:
     - light.woonkamer_voor
     - light.woonkamer_achter
     - light.buiten
-    - light.keuken_strip
+    - light.keukenblok
