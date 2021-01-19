@@ -5,10 +5,120 @@
     name: Rova
     monitored_conditions:
       - bio
-      - paper
       - plastic
       - residual
-      
+
+#Garbage info sensor
+  - platform: template
+    sensors:
+      garbage_plastic:
+        friendly_name: "Garbage Plastic"
+        icon_template: 'mdi:recycle'
+        value_template: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))|timestamp_custom('%A %d %B %Y')}}
+        attribute_templates:
+          day: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))
+            |timestamp_custom('%A')}}
+          date: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))
+            |timestamp_custom('%A %d %B')}}
+          timestamp: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))}}
+          in_days: >
+            {{(((as_timestamp(states("sensor.rova_plastic"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
+          next_pickup: >
+            {% set count = (((as_timestamp(states("sensor.rova_plastic"))) - as_timestamp(now())) | int /60/1440) | round (0)  %}
+            {% set day = as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y')) |timestamp_custom('%A')%}
+            {% set dagen =
+            {'Monday': 'Maandag',
+            'Tuesday': 'Dinsdag',
+            'Wednesday': 'Woensdag',
+            'Thursday': 'Donderdag',
+            'Friday': 'Vrijdag',
+            'Saturday': 'Zaterdag',
+            'Sunday': 'Zondag'} %}
+            {% set dag = dagen[day] if day in dagen else day %} 
+            {% set unit = 'Dag' if count == 1 else 'dagen' %} 
+            {% if count >= 14 %} {% set phrase = dag + ' over 2 weken' %} 
+            {% elif count >= 7 %} {% set phrase = 'Volgende week ' + dag %} 
+            {% elif count >= 3 %} {% set phrase = 'komende ' + dag %} 
+            {% elif count == 2 %} {% set phrase = dag + ', overmorgen' %} {% elif count == 1%} 
+            {% set phrase = 'morgen, ' + dag %} {% else %} 
+            {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
+            {{unit}}) {% endif %}
+      garbage_bio:
+        friendly_name: "Garbage Bio"
+        icon_template: 'mdi:food-apple'
+        value_template: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))|timestamp_custom('%A %d %B %Y')}}
+        attribute_templates:
+          day: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))
+            |timestamp_custom('%A')}}
+          date: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))
+            |timestamp_custom('%A %d %B')}}
+          timestamp: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))}}
+          in_days: >
+            {{(((as_timestamp(states("sensor.rova_bio"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
+          next_pickup: >
+            {% set count = (((as_timestamp(states("sensor.rova_bio"))) - as_timestamp(now())) | int /60/1440) | round (0)  %}
+            {% set day = as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y')) |timestamp_custom('%A')%}
+            {% set dagen =
+            {'Monday': 'Maandag',
+            'Tuesday': 'Dinsdag',
+            'Wednesday': 'Woensdag',
+            'Thursday': 'Donderdag',
+            'Friday': 'Vrijdag',
+            'Saturday': 'Zaterdag',
+            'Sunday': 'Zondag'} %}
+            {% set dag = dagen[day] if day in dagen else day %} 
+            {% set unit = 'Dag' if count == 1 else 'dagen' %} 
+            {% if count >= 14 %} {% set phrase = dag + ' over 2 weken' %} 
+            {% elif count >= 7 %} {% set phrase = 'Volgende week ' + dag %} 
+            {% elif count >= 3 %} {% set phrase = 'komende ' + dag %} 
+            {% elif count == 2 %} {% set phrase = dag + ', overmorgen' %} {% elif count == 1%} 
+            {% set phrase = 'morgen, ' + dag %} {% else %} 
+            {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
+            {{unit}}) {% endif %}
+      garbage_residual:
+        friendly_name: "Garbage Residual"
+        icon_template: 'mdi:dump-truck'
+        value_template: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))|timestamp_custom('%A %d %B %Y')}}
+        attribute_templates:
+          day: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))
+            |timestamp_custom('%A')}}
+          date: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))
+            |timestamp_custom('%A %d %B')}}
+          timestamp: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))}}
+          in_days: >
+            {{(((as_timestamp(states("sensor.rova_residual"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
+          next_pickup: >
+            {% set count = (((as_timestamp(states("sensor.rova_residual"))) - as_timestamp(now())) | int /60/1440) | round (0)  %}
+            {% set day = as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y')) |timestamp_custom('%A')%}
+            {% set dagen =
+            {'Monday': 'Maandag',
+            'Tuesday': 'Dinsdag',
+            'Wednesday': 'Woensdag',
+            'Thursday': 'Donderdag',
+            'Friday': 'Vrijdag',
+            'Saturday': 'Zaterdag',
+            'Sunday': 'Zondag'} %}
+            {% set dag = dagen[day] if day in dagen else day %} 
+            {% set unit = 'Dag' if count == 1 else 'dagen' %} 
+            {% if count >= 14 %} {% set phrase = dag + ' over 2 weken' %} 
+            {% elif count >= 7 %} {% set phrase = 'Volgende week ' + dag %} 
+            {% elif count >= 3 %} {% set phrase = 'komende ' + dag %} 
+            {% elif count == 2 %} {% set phrase = dag + ', overmorgen' %} {% elif count == 1%} 
+            {% set phrase = 'morgen, ' + dag %} {% else %} 
+            {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
+            {{unit}}) {% endif %}
 #Next Garbage sensor
   - platform: template
     sensors:
