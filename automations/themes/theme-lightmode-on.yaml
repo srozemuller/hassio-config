@@ -1,0 +1,23 @@
+alias: Theme darkmode on manual
+description: 'When darkmode button pressed turn darkmode on'
+trigger:
+  - platform: state
+    entity_id: input_boolean.turn_on_darkmode
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.turn_on_darkmode
+    from: 'on'
+    to: 'off'
+action:
+  - service_template: frontend.set_theme
+    data_template:
+      name: >
+        {% if is_state('input_boolean.turn_on_darkmode', 'off') %} {% set service = 'turn_off' %}
+          light
+        {% else %} {% set service = 'turn_on' %}
+          dark
+        {% endif %}
+  - service: input_boolean.{{service}}
+    data: {}
+    entity_id: input_boolean.turn_on_darkmode

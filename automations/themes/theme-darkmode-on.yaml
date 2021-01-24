@@ -1,0 +1,19 @@
+alias: Theme darkmode on at sunset
+description: 'When sunset turn darkmode on'
+trigger:
+  - platform: homeassistant
+    event: start
+  - platform: state
+    entity_id: sun.sun
+action:
+  - service_template: frontend.set_theme
+    data_template:
+      name: >
+        {% if is_state('sun.sun', 'above_horizon') %} {% set service = 'turn_off' %}
+          light
+        {% else %} {% set service = 'turn_on' %}
+          dark
+        {% endif %}
+  - service: input_boolean.{{service}}
+    data: {}
+    entity_id: input_boolean.turn_on_darkmode
