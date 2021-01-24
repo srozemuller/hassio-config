@@ -1,0 +1,26 @@
+alias: 'System vacationmode changed'
+description: 'Notify when vacationmode has been changed'
+mode: single
+trigger:
+  - platform: state
+    entity_id: input_boolean.turn_on_vacationmode
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.turn_on_vacationmode
+    from: 'on'
+    to: 'off'
+condition:
+action:
+  service: notify.mobile_app_iphone_sander
+  data:
+    title: 'Vakantiemode'
+    message: >
+      {% if states('input_boolean.turn_on_vacationmode') == 'on' %} {% set category = 'vacationmode' %}
+      {% elif states('input_boolean.turn_on_vacationmode') == 'off' %} {% set category = 'vacationmodeon' %}
+      {% endif %}
+      Vakantiemodus is {{ states('input_boolean.turn_on_vacationmode') }}
+    data:
+      push:
+        badge: 5
+        category: "{{ category }}"

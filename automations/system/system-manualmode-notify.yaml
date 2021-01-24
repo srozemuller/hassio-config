@@ -1,0 +1,26 @@
+alias: 'System manualmode changed'
+description: 'Notify when manualmode has been changed'
+mode: single
+trigger:
+  - platform: state
+    entity_id: input_boolean.turn_on_manual
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: input_boolean.turn_on_manual
+    from: 'on'
+    to: 'off'
+condition:
+action:
+  service: notify.mobile_app_iphone_sander
+  data:
+    title: 'Manualmode'
+    message: >
+      {% if states('input_boolean.turn_on_manual') == 'on' %} {% set category = 'manualmode' %}
+      {% elif states('input_boolean.turn_on_manual') == 'off' %} {% set category = 'manualmodeon' %}
+      {% endif %}
+      Manualmode is {{ states('input_boolean.turn_on_manual') }}
+    data:
+      push:
+        badge: 5
+        category: "{{ category }}"
