@@ -119,6 +119,14 @@
             {% set phrase = 'morgen, ' + dag %} {% else %} 
             {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
             {{unit}}) {% endif %}
+      garbage_next:
+        friendly_name: "Next garbage"
+        value_template: >
+          {%set garbagelist = (state_attr("sensor.garbage_plastic",'in_days'))|int,
+                        (state_attr("sensor.garbage_bio",'in_days'))|int,
+                        (state_attr("sensor.garbage_residual",'in_days'))|int
+                        %}
+          {{ garbagelist|min }}
 #Next Garbage sensor
   - platform: template
     sensors:

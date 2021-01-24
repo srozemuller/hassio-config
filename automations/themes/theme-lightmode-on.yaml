@@ -18,6 +18,7 @@ action:
         {% else %} {% set service = 'turn_on' %}
           dark
         {% endif %}
-  - service: input_boolean.{{service}}
+  - service: >
+      input_boolean.{{service}}
     data: {}
     entity_id: input_boolean.turn_on_darkmode
