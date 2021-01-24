@@ -132,7 +132,7 @@
           {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_residual.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
           	residual
           {% else %}
-          	nothing
+          	'no pickup'
           {%endif%}
         icon_template: >-
           {%- if now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_plastic.state) - 	(24*3600)) | timestamp_custom("%Y-%m-%d")-%}

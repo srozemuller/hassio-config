@@ -4,7 +4,29 @@ mode: single
 trigger:
   - platform: time
     at: '18:00'
-condition: []
+condition:
+  condition: or
+  conditions:
+    - condition: template
+      value_template: >
+        {{ (state_attr("sensor.garbage_plastic",'in_days')) == 0}}
+    - condition: template
+      value_template: >
+        {{ (state_attr("sensor.garbage_bio",'in_days')) == 0}}
+    - condition: template
+      value_template: >      
+        {{ (state_attr("sensor.garbage_residual",'in_days')) == 0}}
 action:
-  - service: hassio.snapshot_full
-    data: {} 
+  service: notify.mobile_app_iphone_sander
+  data:
+    title: Afval
+    message: >
+      {% if (state_attr("sensor.garbage_plastic",'in_days')) == 0 %} {% set garbage = 'Plastic' %}
+      {% elif (state_attr("sensor.garbage_bio",'in_days')) == 0 %} {% set garbage = 'Groene' %}
+      {% elif (state_attr("sensor.garbage_residual",'in_days')) == 0 %} {% set garbage = 'Grijze' %}
+      {% else %} {% set garbage = 'geen' %}
+      {% endif %}
+      {{garbage}} bak morgen aan de weg
+    data:
+      push:
+        badge: 5

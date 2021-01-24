@@ -3,7 +3,7 @@ description: 'Turn lights into normal when doors are closed'
 trigger:
   - platform: state
     entity_id: group.all_doorsensors
-    to: "off"
+    to: 'off'
 condition:
   - condition: state
     entity_id: light.strip_office
