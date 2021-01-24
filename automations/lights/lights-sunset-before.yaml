@@ -10,13 +10,6 @@ action:
     data:
       brightness: 100
       color_temp: 370
-      rgb: [
-        255,
-        115,
-        166
-      ],
-      hex: "ffdda7",
-      color: "tan",
       entity_id:
         - light.keuken_strip
   - service: light.turn_on
