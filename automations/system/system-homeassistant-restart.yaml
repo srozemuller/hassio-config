@@ -1,0 +1,9 @@
+  alias: System notify when HA is started
+  trigger:
+    platform: homeassistant
+    event: start
+  action:
+    service: notify.mobile_app_iphone_sander
+    data:
+      title: "Informatie"
+      message: "HomeAssistant is opnieuw gestart"

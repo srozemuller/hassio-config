@@ -1,0 +1,18 @@
+alias: 'Sensors notify if contactsensor is open'
+description: 'Notify when awaymode is on and sensor has no contact'
+mode: single
+trigger:
+  - platform: state
+    entity_id: group.all_doorsensors
+    from: 'off'
+    to: 'on'
+condition: "{{ states('input_boolean.turn_on_vacationmode') == 'on' }}"
+action:
+  service: notify.notify
+  data:
+    title: 'Activiteit!'
+    message: 'Deur is open maar vakantiemode staat aan.'
+    data:
+      push:
+        badge: 5
+        category: "siren"
