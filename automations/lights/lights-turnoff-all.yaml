@@ -5,12 +5,14 @@ trigger:
   - platform: time
     at: '23:30'
 condition:
-  - condition: state
-    entity_id: input_boolean.turn_on_vacationmode
-    state: 'On'
-  - condition: state
-    entity_id: binary_sensor.weekend_days
-    state: 'On'
+  condition: or
+  conditions:
+    - condition: state
+      entity_id: input_boolean.turn_on_vacationmode
+      state: 'On'
+    - condition: state
+      entity_id: binary_sensor.weekend_days
+      state: 'On'
 action:
   - service: light.turn_off
     data: {}
