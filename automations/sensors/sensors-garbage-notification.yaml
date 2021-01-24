@@ -17,7 +17,7 @@ condition:
       value_template: >      
         {{ (state_attr("sensor.garbage_residual",'in_days')) == 0}}
 action:
-  service: notify.mobile_app_iphone_sander
+  service: notify.notify
   data:
     title: Afval
     message: >
