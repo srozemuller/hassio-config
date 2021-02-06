@@ -3,7 +3,7 @@
 
 In the basics my environment has the following configuration
 
-![hassioversion](https://img.shields.io/badge/hassio-2020.12.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
+![hassioversion](https://img.shields.io/badge/hassio-2021.2.1-blue) ![reposize](https://img.shields.io/github/repo-size/srozemuller/hassio-config) ![lastcommit](https://img.shields.io/github/last-commit/srozemuller/hassio-config)
 
 #### Local
 
