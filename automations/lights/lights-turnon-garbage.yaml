@@ -1,0 +1,17 @@
+alias: Lights at garbage turn on
+description: 'Turn light on when doors are open'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00052d50b1_contact #garagedoor
+    to: "on"
+  - platform: state
+    entity_id: binary_sensor.0x00158d00052d5737_contact #backdoor
+    to: "on"
+condition:
+  - condition: state  # from sunset until sunrise
+    entity_id: sun.sun
+    state: "below_horizon"
+action:
+  - service: lights.turn_on
+    entity_id: light.garbage
+mode: single

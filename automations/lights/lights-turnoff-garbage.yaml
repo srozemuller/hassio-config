@@ -1,0 +1,17 @@
+alias: Lights at garbage turn off
+description: 'Turn light off when doors are closed'
+trigger:
+  - platform: state
+    entity_id: binary_sensor.0x00158d00052d50b1_contact #garagedoor
+    to: "off"
+  - platform: state
+    entity_id: binary_sensor.0x00158d00052d5737_contact #backdoor
+    to: "off"
+condition:
+  - condition: state  # from sunset until sunrise
+    entity_id: sun.sun
+    state: "below_horizon"
+action:
+  - service: lights.turn_off
+    entity_id: light.garbage
+mode: single
