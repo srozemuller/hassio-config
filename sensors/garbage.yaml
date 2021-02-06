@@ -15,19 +15,6 @@
         friendly_name: "Garbage Plastic"
         icon_template: 'mdi:recycle'
         value_template: >
-            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))|timestamp_custom('%A %d %B %Y')}}
-        attribute_templates:
-          day: >
-            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))
-            |timestamp_custom('%A')}}
-          date: >
-            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))
-            |timestamp_custom('%A %d %B')}}
-          timestamp: >
-            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))}}
-          in_days: >
-            {{(((as_timestamp(states("sensor.rova_plastic"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
-          next_pickup: >
             {% set count = (((as_timestamp(states("sensor.rova_plastic"))) - as_timestamp(now())) | int /60/1440) | round (0)  %}
             {% set day = as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y')) |timestamp_custom('%A')%}
             {% set dagen =
@@ -47,23 +34,21 @@
             {% set phrase = 'morgen, ' + dag %} {% else %} 
             {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
             {{unit}}) {% endif %}
+        attribute_templates:
+          day: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))
+            |timestamp_custom('%A')}}
+          date: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))
+            |timestamp_custom('%A %d %B')}}
+          timestamp: >
+            {{as_timestamp(strptime(states('sensor.rova_plastic'),'%d-%m-%Y'))}}
+          in_days: >
+            {{(((as_timestamp(states("sensor.rova_plastic"))) - as_timestamp(now())) | int /60/1440) | round (0) }}
       garbage_bio:
         friendly_name: "Garbage Bio"
         icon_template: 'mdi:food-apple'
         value_template: >
-            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))|timestamp_custom('%A %d %B %Y')}}
-        attribute_templates:
-          day: >
-            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))
-            |timestamp_custom('%A')}}
-          date: >
-            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))
-            |timestamp_custom('%A %d %B')}}
-          timestamp: >
-            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))}}
-          in_days: >
-            {{(((as_timestamp(states("sensor.rova_bio"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
-          next_pickup: >
             {% set count = (((as_timestamp(states("sensor.rova_bio"))) - as_timestamp(now())) | int /60/1440) | round (0)  %}
             {% set day = as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y')) |timestamp_custom('%A')%}
             {% set dagen =
@@ -83,23 +68,21 @@
             {% set phrase = 'morgen, ' + dag %} {% else %} 
             {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
             {{unit}}) {% endif %}
+        attribute_templates:
+          day: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))
+            |timestamp_custom('%A')}}
+          date: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))
+            |timestamp_custom('%A %d %B')}}
+          timestamp: >
+            {{as_timestamp(strptime(states('sensor.rova_bio'),'%d-%m-%Y'))}}
+          in_days: >
+            {{(((as_timestamp(states("sensor.rova_bio"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
       garbage_residual:
         friendly_name: "Garbage Residual"
         icon_template: 'mdi:dump-truck'
         value_template: >
-            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))|timestamp_custom('%A %d %B %Y')}}
-        attribute_templates:
-          day: >
-            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))
-            |timestamp_custom('%A')}}
-          date: >
-            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))
-            |timestamp_custom('%A %d %B')}}
-          timestamp: >
-            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))}}
-          in_days: >
-            {{(((as_timestamp(states("sensor.rova_residual"))) - as_timestamp(now())) | int /60/1440) | round (0) }}  
-          next_pickup: >
             {% set count = (((as_timestamp(states("sensor.rova_residual"))) - as_timestamp(now())) | int /60/1440) | round (0)  %}
             {% set day = as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y')) |timestamp_custom('%A')%}
             {% set dagen =
@@ -119,40 +102,41 @@
             {% set phrase = 'morgen, ' + dag %} {% else %} 
             {% set phrase ='Vandaag, ' + dag %} {% endif %} {{phrase}} {% if count != 0%} ({{count}}
             {{unit}}) {% endif %}
-      garbage_next:
-        friendly_name: "Next garbage"
-        value_template: >
+        attribute_templates:
+          day: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))
+            |timestamp_custom('%A')}}
+          date: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))
+            |timestamp_custom('%A %d %B')}}
+          timestamp: >
+            {{as_timestamp(strptime(states('sensor.rova_residual'),'%d-%m-%Y'))}}
+          in_days: >
+            {{(((as_timestamp(states("sensor.rova_residual"))) - as_timestamp(now())) | int /60/1440) | round (0) }}    
+      next_garbage:
+        friendly_name: "Next Garbage"
+        value_template: >-
           {%set garbagelist = (state_attr("sensor.garbage_plastic",'in_days'))|int,
                         (state_attr("sensor.garbage_bio",'in_days'))|int,
                         (state_attr("sensor.garbage_residual",'in_days'))|int
                         %}
-          {{ garbagelist|min }}
-#Next Garbage sensor
-  - platform: template
-    sensors:
-      next_garbage:
-        friendly_name: "Next Garbage"
-        value_template: >-
-          {%- if now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_plastic.state) - 	(24*3600)) | timestamp_custom("%Y-%m-%d")-%}
-            plastic
-          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_bio.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
-          	bio
-          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_residual.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
-          	residual
-          {% else %}
-          	'no pickup'
-          {%endif%}
+          {% if (garbagelist|min) == ((state_attr("sensor.garbage_bio",'in_days')|int )) %}
+          Bio
+          {% elif (garbagelist|min) == ((state_attr("sensor.garbage_residual",'in_days')|int )) %}
+          Residual
+          {% elif (garbagelist|min) == ((state_attr("sensor.garbage_plastic",'in_days')|int )) %}
+          Plastic
+          {% endif %}
         icon_template: >-
-          {%- if now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_plastic.state) - 	(24*3600)) | timestamp_custom("%Y-%m-%d")-%}
+          {%set garbagelist = (state_attr("sensor.garbage_plastic",'in_days'))|int,
+                        (state_attr("sensor.garbage_bio",'in_days'))|int,
+                        (state_attr("sensor.garbage_residual",'in_days'))|int
+                        %}
+          {%- if (garbagelist|min) == ((state_attr("sensor.garbage_plastic",'in_days')|int )) -%}
             mdi:recycle
-          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_bio.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
+          {% elif (garbagelist|min) == ((state_attr("sensor.garbage_bio",'in_days')|int )) %}
           	mdi:food-apple
-          {% elif now().strftime("%Y-%m-%d") == (as_timestamp(states.sensor.rova_residual.state) - (24*3600)) | timestamp_custom("%Y-%m-%d") %}
+          {% elif (garbagelist|min) == ((state_attr("sensor.garbage_residual",'in_days')|int )) %}
           	mdi:dump-truck
-          {% else %}
-          	mdi:circle-off-outline
-          {%endif%}
-
-
-       
+          {%endif%}      
        
