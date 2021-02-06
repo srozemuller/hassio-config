@@ -8,7 +8,7 @@ condition: []
 action:
   - service: light.turn_on
     data:
-      brightness: 100
+      brightness: 255
       color_temp: 370
       entity_id:
         - light.keuken_strip
