@@ -2,4 +2,4 @@ lights-office:
   name: Lights in office
   icon: 'mdi:desktop-mac-dashboard'
   entities:
-    - light.light.strip_office
+    - light.strip_office
