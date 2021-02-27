@@ -15,9 +15,9 @@ action:
           dark
         {% endif %}
   - service: >
-    {% if if is_state('sun.sun', 'above_horizon') %}
-    input_boolean.turn_on
-    {% else %}
-    input_boolean.turn_off
-    {% endif %}
-  entity_id: input_boolean.turn_on_darkmode
+      {% if is_state('sun.sun', 'above_horizon') %}
+        input_boolean.turn_off
+      {% else %}
+        input_boolean.turn_on
+      {% endif %}
+    entity_id: input_boolean.turn_on_darkmode
