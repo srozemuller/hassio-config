@@ -19,6 +19,9 @@ action:
           dark
         {% endif %}
   - service: >
-      input_boolean.{{service}}
-    data: {}
+      {% if is_state('input_boolean.turn_on_darkmode', 'off') %}
+        input_boolean.turn_off
+      {% else %}
+        input_boolean.turn_on
+      {% endif %}
     entity_id: input_boolean.turn_on_darkmode
