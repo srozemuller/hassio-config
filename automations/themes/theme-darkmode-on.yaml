@@ -14,6 +14,10 @@ action:
         {% else %} {% set service = 'turn_on' %}
           dark
         {% endif %}
-  - service: input_boolean.{{service}}
-    data: {}
-    entity_id: input_boolean.turn_on_darkmode
+  - service: >
+    {% if if is_state('sun.sun', 'above_horizon') %}
+    input_boolean.turn_on
+    {% else %}
+    input_boolean.turn_off
+    {% endif %}
+  entity_id: input_boolean.turn_on_darkmode
